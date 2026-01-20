@@ -5,6 +5,25 @@
   --foreground: #171717;
 }
 
+/* animated gradient already in your globals? keep it */
+:root {
+  --intro-sky-1: #08040a;
+  --intro-sky-2: #12060c;
+}
+
+/* ensure svg shapes are crisp */
+svg {
+  display: block;
+}
+
+/* optional: tune the intro height responsiveness */
+@media (min-width: 1024px) {
+  section.intro-hero {
+    height: 88vh;
+  }
+}
+
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -24,3 +43,23 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Animated Gradient Background */
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+body {
+  background: linear-gradient(-45deg, #1f1f1f, #111, #222, #0f0f0f);
+  background-size: 400% 400%;
+  animation: gradient-move 20s ease infinite;
+}
+
