@@ -13,26 +13,23 @@ export default function Navbar() {
     { name: "Projects", href: "#projects" },
     { name: "Skills", href: "#skills" },
     { name: "Education", href: "#education" },
+    { name: "Athletics", href: "#sports" },
     { name: "About Me", href: "#about" },
     { name: "Contact", href: "#contact" },
   ];
 
   useEffect(() => {
-    // Scroll detection using scroll event
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 200; // Increased offset for better detection
+      const scrollPosition = window.scrollY + 200;
       
-      // Get the current scroll position relative to document height
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
       
-      // If we're at the bottom of the page, activate the last section
       if (window.scrollY + windowHeight >= documentHeight - 50) {
         setActiveSection("contact");
         return;
       }
 
-      // Find which section we're currently in
       for (let i = navLinks.length - 1; i >= 0; i--) {
         const sectionId = navLinks[i].href.substring(1);
         const section = document.getElementById(sectionId);
@@ -48,12 +45,10 @@ export default function Navbar() {
       }
     };
 
-    // Set initial active section with a small delay to ensure DOM is ready
     const timer = setTimeout(() => {
       handleScroll();
     }, 100);
 
-    // Listen to scroll events
     window.addEventListener("scroll", handleScroll, { passive: true });
     
     return () => {
@@ -62,14 +57,13 @@ export default function Navbar() {
     };
   }, []);
 
-  // Smooth scroll handler
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const sectionId = href.substring(1);
     const section = document.getElementById(sectionId);
     
     if (section) {
-      const navbarHeight = 80; // Approximate navbar height
+      const navbarHeight = 80;
       const sectionTop = section.offsetTop - navbarHeight;
       
       window.scrollTo({
@@ -77,10 +71,7 @@ export default function Navbar() {
         behavior: "smooth"
       });
       
-      // Update active section immediately on click
       setActiveSection(sectionId);
-    } else {
-      console.error(`Section with id "${sectionId}" not found. Make sure you have elements with these IDs in your page.`);
     }
   };
 
@@ -93,18 +84,15 @@ export default function Navbar() {
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         
-        {/* Logo / Name - Clicking this also goes to Intro */}
         <Link
           href="#intro"
           onClick={(e) => handleClick(e, "#intro")}
-          className="text-purple-700 font-bold text-xl tracking-tight
-                     hover:text-purple-900 transition-colors"
+          className="text-purple-700 font-bold text-xl tracking-tight hover:text-purple-900 transition-colors"
         >
           Kyle Rebello
         </Link>
 
-        {/* Navigation Links */}
-        <div className="hidden lg:flex gap-6 text-sm font-medium">
+        <div className="hidden lg:flex gap-5 text-sm font-medium">
           {navLinks.map((link) => {
             const isActive = activeSection === link.href.substring(1);
             return (
