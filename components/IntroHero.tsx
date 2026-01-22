@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useMemo } from "react";
 
 export default function IntroHero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -10,7 +10,7 @@ export default function IntroHero() {
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const phrases = ["Computer Engineering @ McMaster University.", "Seeking Summer 2026 Internships."];
+  const phrases = useMemo(() => ["Computer Engineering @ McMaster University.", "Seeking Summer 2026 Internships."], []);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -28,8 +28,10 @@ export default function IntroHero() {
     if (!isDeleting && typedText === currentPhrase) {
       timeout = setTimeout(() => setIsDeleting(true), 2000);
     } else if (isDeleting && typedText === "") {
-      setIsDeleting(false);
-      setCurrentPhraseIndex((prev) => (prev + 1) % phrases.length);
+      timeout = setTimeout(() => {
+        setIsDeleting(false);
+        setCurrentPhraseIndex((prev) => (prev + 1) % phrases.length);
+      }, 0);
     } else {
       const typingSpeed = isDeleting ? 50 : 100;
       timeout = setTimeout(() => {
@@ -67,8 +69,9 @@ export default function IntroHero() {
 
       <div className="absolute inset-0 bg-black/40" />
 
+      {/* @ts-expect-error framer motion typing issue */}
       <motion.div
-        style={{ y: textY, opacity: textOpacity } as any}
+        style={{ y: textY, opacity: textOpacity }}
         className="relative z-10 flex h-full items-center justify-center px-6 text-center"
       >
         <div className="max-w-3xl">
