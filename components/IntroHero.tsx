@@ -69,7 +69,6 @@ export default function IntroHero() {
 
       <div className="absolute inset-0 bg-black/40" />
 
-      {/* @ts-expect-error framer motion typing issue */}
       <motion.div
         style={{ y: textY, opacity: textOpacity }}
         className="relative z-10 flex h-full items-center justify-center px-6 text-center"
