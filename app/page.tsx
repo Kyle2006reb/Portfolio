@@ -936,90 +936,165 @@ className="px-2 py-1 text-xs font-bold bg-purple-500/10 text-purple-700 border b
       },
     }}
   >
-    {/* Dragon Boat */}
+    {/* Dragon Boat - Water Theme */}
     <motion.div
       variants={{
         hidden: { opacity: 0, y: 30 },
         show: { opacity: 1, y: 0 }
       }}
       whileHover={{ y: -5 }}
-      className="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-purple-200 transition-all overflow-hidden"
+      className="group relative rounded-2xl border border-cyan-200 shadow-sm hover:shadow-xl hover:border-cyan-300 transition-all overflow-hidden"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-indigo-600/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+      {/* Water background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-cyan-50 via-blue-50 to-cyan-100" />
       
-      <div className="p-8">
+      {/* Animated waves */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 overflow-hidden">
+        <motion.div
+          animate={{ x: [0, -100, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-0 left-0 right-0 h-16"
+          style={{
+            background: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath fill='%2306b6d420' d='M0,60 C150,120 350,0 600,60 C850,120 1050,0 1200,60 L1200,120 L0,120 Z'/%3E%3C/svg%3E\") repeat-x",
+            backgroundSize: "600px 100%"
+          }}
+        />
+        <motion.div
+          animate={{ x: [-50, 50, -50] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-0 left-0 right-0 h-12"
+          style={{
+            background: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath fill='%2306b6d430' d='M0,60 C150,120 350,0 600,60 C850,120 1050,0 1200,60 L1200,120 L0,120 Z'/%3E%3C/svg%3E\") repeat-x",
+            backgroundSize: "400px 100%"
+          }}
+        />
+      </div>
+
+      {/* Floating ripples */}
+      <motion.div
+        animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0, 0.3] }}
+        transition={{ duration: 3, repeat: Infinity }}
+        className="absolute top-20 left-10 w-8 h-8 rounded-full border-2 border-cyan-300/40"
+      />
+      <motion.div
+        animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0, 0.3] }}
+        transition={{ duration: 4, repeat: Infinity, delay: 1 }}
+        className="absolute top-32 right-16 w-6 h-6 rounded-full border-2 border-blue-300/40"
+      />
+      
+      <div className="relative p-8">
         <div className="flex items-center gap-5 mb-5">
-          <div className="w-20 h-20 rounded-xl bg-gray-100 border-2 border-purple-200 flex items-center justify-center overflow-hidden group-hover:border-purple-400 transition-colors">
+          <div className="w-20 h-20 rounded-xl bg-white/80 border-2 border-cyan-300 flex items-center justify-center overflow-hidden group-hover:border-cyan-400 transition-colors shadow-md">
             <Image src="/logos/dragon_boat.jpg" alt="Dragon Boat" width={70} height={70} className="object-contain" />
           </div>
           <div>
             <h3 className="text-2xl font-bold text-gray-900">Dragon Boat Rowing 🐉🛶</h3>
-            <p className="text-purple-700 font-medium text-lg">McMaster Official Team</p>
+            <p className="text-cyan-700 font-medium text-lg">McMaster Official Team</p>
           </div>
         </div>
         
         <div className="space-y-4">
-          <div className="flex items-center gap-2 text-gray-600 text-lg">
-            <span className="text-purple-500">▸</span>
+          <div className="flex items-center gap-2 text-gray-700 text-lg">
+            <span className="text-cyan-500">▸</span>
             <p>Competitive rowing team member</p>
           </div>
-          <div className="flex items-center gap-2 text-gray-600 text-lg">
-            <span className="text-purple-500">▸</span>
+          <div className="flex items-center gap-2 text-gray-700 text-lg">
+            <span className="text-cyan-500">▸</span>
             <p>Team coordination and endurance training</p>
           </div>
-          <div className="flex items-center gap-2 text-gray-600 text-lg">
-            <span className="text-purple-500">▸</span>
+          <div className="flex items-center gap-2 text-gray-700 text-lg">
+            <span className="text-cyan-500">▸</span>
             <p>Competing in regional tournaments</p>
           </div>
         </div>
 
-        <div className="mt-6 pt-5 border-t border-gray-100 flex items-center justify-between">
+        <div className="mt-6 pt-5 border-t border-cyan-200/50 flex items-center justify-between">
           <span className="text-sm text-gray-500">Sept 2025 - Present</span>
-          <span className="px-3 py-1 bg-purple-100 text-purple-700 text-sm font-medium rounded-full">Active</span>
+          <span className="px-3 py-1 bg-cyan-100 text-cyan-700 text-sm font-medium rounded-full">Active</span>
         </div>
       </div>
     </motion.div>
 
-    {/* Soccer */}
+    {/* Soccer - Pitch Theme */}
     <motion.div
       variants={{
         hidden: { opacity: 0, y: 30 },
         show: { opacity: 1, y: 0 }
       }}
       whileHover={{ y: -5 }}
-      className="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-purple-200 transition-all overflow-hidden"
+      className="group relative rounded-2xl border border-green-200 shadow-sm hover:shadow-xl hover:border-green-300 transition-all overflow-hidden"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-indigo-600/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+      {/* Grass background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-green-100 via-emerald-50 to-green-100" />
       
-      <div className="p-8">
+      {/* Pitch lines */}
+      <div className="absolute inset-0 opacity-20">
+        {/* Center circle */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full border-2 border-white" />
+        {/* Center line */}
+        <div className="absolute top-0 bottom-0 left-1/2 w-0.5 bg-white" />
+        {/* Top box */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-12 border-2 border-t-0 border-white" />
+        {/* Bottom box */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-12 border-2 border-b-0 border-white" />
+      </div>
+
+      {/* Grass texture stripes */}
+      <div className="absolute inset-0 opacity-10">
+        {[...Array(8)].map((_, i) => (
+          <div 
+            key={i} 
+            className={`absolute top-0 bottom-0 w-[12.5%] ${i % 2 === 0 ? 'bg-green-900' : 'bg-transparent'}`}
+            style={{ left: `${i * 12.5}%` }}
+          />
+        ))}
+      </div>
+
+      {/* Floating soccer ball */}
+      <motion.div
+        animate={{ y: [0, -8, 0], rotate: [0, 10, 0] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-16 right-8 text-2xl opacity-30"
+      >
+        ⚽
+      </motion.div>
+      <motion.div
+        animate={{ y: [0, -5, 0], rotate: [0, -10, 0] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        className="absolute bottom-24 left-6 text-xl opacity-20"
+      >
+        ⚽
+      </motion.div>
+      
+      <div className="relative p-8">
         <div className="flex items-center gap-5 mb-5">
-          <div className="w-20 h-20 rounded-xl bg-gray-100 border-2 border-purple-200 flex items-center justify-center overflow-hidden group-hover:border-purple-400 transition-colors">
+          <div className="w-20 h-20 rounded-xl bg-white/80 border-2 border-green-300 flex items-center justify-center overflow-hidden group-hover:border-green-400 transition-colors shadow-md">
             <Image src="/logos/soccer.jpg" alt="Soccer" width={70} height={70} className="object-contain" />
           </div>
           <div>
             <h3 className="text-2xl font-bold text-gray-900">Soccer ⚽</h3>
-            <p className="text-purple-700 font-medium text-lg">McMaster Men&apos;s Intramurals</p>
+            <p className="text-green-700 font-medium text-lg">McMaster Men&apos;s Intramurals</p>
           </div>
         </div>
         
         <div className="space-y-4">
-          <div className="flex items-center gap-2 text-gray-600 text-lg">
-            <span className="text-purple-500">▸</span>
+          <div className="flex items-center gap-2 text-gray-700 text-lg">
+            <span className="text-green-500">▸</span>
             <p>Intramural league competitor</p>
           </div>
-          <div className="flex items-center gap-2 text-gray-600 text-lg">
-            <span className="text-purple-500">▸</span>
+          <div className="flex items-center gap-2 text-gray-700 text-lg">
+            <span className="text-green-500">▸</span>
             <p>Weekly matches and team strategy</p>
           </div>
-          <div className="flex items-center gap-2 text-gray-600 text-lg">
-            <span className="text-purple-500">▸</span>
+          <div className="flex items-center gap-2 text-gray-700 text-lg">
+            <span className="text-green-500">▸</span>
             <p>Building teamwork and communication skills</p>
           </div>
         </div>
 
-        <div className="mt-6 pt-5 border-t border-gray-100 flex items-center justify-between">
+        <div className="mt-6 pt-5 border-t border-green-200/50 flex items-center justify-between">
           <span className="text-sm text-gray-500">Dec 2025 - Present</span>
-          <span className="px-3 py-1 bg-purple-100 text-purple-700 text-sm font-medium rounded-full">Active</span>
+          <span className="px-3 py-1 bg-green-100 text-green-700 text-sm font-medium rounded-full">Active</span>
         </div>
       </div>
     </motion.div>
@@ -1028,189 +1103,249 @@ className="px-2 py-1 text-xs font-bold bg-purple-500/10 text-purple-700 border b
 
 
       {/* About */}
-<section id="about" className="pb-32 max-w-6xl mx-auto px-6">
-  <motion.h2 
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    className="text-5xl md:text-6xl font-semibold mb-12 text-center tracking-tight text-gray-900"
-  >
-    About Me
-  </motion.h2>
+<section id="about" className="pb-32 pt-20 bg-purple-50/70">
+  <div className="max-w-6xl mx-auto px-6">
+    <motion.h2 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="text-5xl md:text-6xl font-semibold mb-12 text-center tracking-tight text-gray-900"
+    >
+      About Me
+    </motion.h2>
 
-  <motion.div 
-    className="max-w-4xl mx-auto grid gap-4"
-    initial="hidden"
-    whileInView="show"
-    viewport={{ once: true }}
-    variants={{
-      hidden: { opacity: 0 },
-      show: {
-        opacity: 1,
-        transition: {
-          staggerChildren: 0.15,
+    <motion.div 
+      className="max-w-4xl mx-auto grid gap-4"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+      variants={{
+        hidden: { opacity: 0 },
+        show: {
+          opacity: 1,
+          transition: {
+            staggerChildren: 0.15,
+          },
         },
-      },
-    }}
-  >
-    {[
-      { icon: "🧠", text: "Passionate about artificial intelligence / machine learning, and math.", color: "from-purple-500 to-indigo-500" },
-      { icon: "🔧", text: "Enjoy applying machine learning techniques to solve real-world problems.", color: "from-indigo-500 to-blue-500" },
-      { icon: "🌍", text: "Driven to learn and create solutions which improve global quality of life.", color: "from-blue-500 to-cyan-500" },
-      { icon: "⚽", text: "Outside of tech, I love playing soccer, going to the gym, and spending time with friends and family!", color: "from-cyan-500 to-teal-500" },
-      { icon: "🚀", text: "Seeking Summer 2026 internships to learn, contribute, and grow in team-driven environments.", color: "from-teal-500 to-purple-500" }
-    ].map((item, index) => (
-      <motion.div 
-        key={index}
-        variants={{
-          hidden: { opacity: 0, x: -30 },
-          show: { opacity: 1, x: 0 }
-        }}
-        whileHover={{ scale: 1.02, x: 10 }}
-        className="group relative flex items-center gap-4 p-5 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-purple-200 transition-all cursor-default"
-      >
-        <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform`}>
-          {item.icon}
-        </div>
-        <p className="text-gray-700 leading-relaxed">{item.text}</p>
-        <div className={`absolute left-0 top-0 bottom-0 w-1 rounded-l-xl bg-gradient-to-b ${item.color} opacity-0 group-hover:opacity-100 transition-opacity`} />
-      </motion.div>
-    ))}
-  </motion.div>
+      }}
+    >
+      {[
+        { icon: "🧠", text: "Passionate about artificial intelligence / machine learning, and math.", color: "from-purple-500 to-indigo-500" },
+        { icon: "🔧", text: "Enjoy applying machine learning techniques to solve real-world problems.", color: "from-indigo-500 to-blue-500" },
+        { icon: "🌍", text: "Driven to learn and create solutions which improve global quality of life.", color: "from-blue-500 to-cyan-500" },
+        { icon: "⚽", text: "Outside of tech, I love playing soccer, going to the gym, and spending time with friends and family!", color: "from-cyan-500 to-teal-500" },
+        { icon: "🚀", text: "Seeking Summer 2026 internships to learn, contribute, and grow in team-driven environments.", color: "from-teal-500 to-purple-500" }
+      ].map((item, index) => (
+        <motion.div 
+          key={index}
+          variants={{
+            hidden: { opacity: 0, x: -30 },
+            show: { opacity: 1, x: 0 }
+          }}
+          whileHover={{ scale: 1.02, x: 10 }}
+          className="group relative flex items-center gap-4 p-5 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-purple-200 transition-all cursor-default"
+        >
+          <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform`}>
+            {item.icon}
+          </div>
+          <p className="text-gray-700 leading-relaxed">{item.text}</p>
+          <div className={`absolute left-0 top-0 bottom-0 w-1 rounded-l-xl bg-gradient-to-b ${item.color} opacity-0 group-hover:opacity-100 transition-opacity`} />
+        </motion.div>
+      ))}
+    </motion.div>
+  </div>
 </section>
 
       {/* Contact */}
-<section id="contact" className="pb-16 max-w-6xl mx-auto px-6">
-  <h2 className="text-5xl md:text-6xl font-semibold mb-10 text-center tracking-tight text-gray-900">
-    Contact
-  </h2>
+<section id="contact" className="pb-16 pt-20 relative overflow-hidden">
+  {/* Background shapes */}
+  <div className="absolute inset-0 -z-10">
+    {/* Swaying circles */}
+    <motion.div
+      animate={{ x: [0, 15, 0], y: [0, -10, 0] }}
+      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      className="absolute top-20 left-10 w-32 h-32 rounded-full bg-purple-200/30"
+    />
+    <motion.div
+      animate={{ x: [0, -10, 0], y: [0, 15, 0] }}
+      transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+      className="absolute top-40 right-20 w-24 h-24 rounded-full bg-purple-300/20"
+    />
+    <motion.div
+      animate={{ x: [0, 10, 0], y: [0, 10, 0] }}
+      transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+      className="absolute bottom-20 left-1/4 w-20 h-20 rounded-full bg-indigo-200/30"
+    />
 
-  <motion.div 
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5 }}
-    viewport={{ once: true }}
-    className="max-w-xl mx-auto bg-white/80 backdrop-blur-sm rounded-2xl border border-purple-200 shadow-lg shadow-purple-100/50 p-8"
-  >
-    <div className="flex flex-col gap-5">
-      <a 
-        href="mailto:andrekylerebello@gmail.com" 
-        className="flex items-center gap-4 p-4 rounded-xl bg-purple-50/50 hover:bg-purple-100/70 transition-colors group"
-      >
-        <div className="w-12 h-12 rounded-full bg-purple-700 flex items-center justify-center text-white text-xl group-hover:scale-110 transition-transform">
-          ✉
-        </div>
-        <div>
-          <p className="text-sm text-purple-700 font-medium">Email</p>
-          <p className="text-gray-700">andrekylerebello@gmail.com</p>
-        </div>
-      </a>
+    {/* Swaying squares */}
+    <motion.div
+      animate={{ rotate: [0, 10, 0], y: [0, -8, 0] }}
+      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+      className="absolute top-32 right-1/4 w-16 h-16 rounded-xl bg-purple-200/40 rotate-12"
+    />
+    <motion.div
+      animate={{ rotate: [0, -15, 0], x: [0, 10, 0] }}
+      transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+      className="absolute bottom-32 right-10 w-20 h-20 rounded-xl bg-purple-100/50 -rotate-6"
+    />
+    <motion.div
+      animate={{ rotate: [0, 8, 0], y: [0, 12, 0] }}
+      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+      className="absolute top-1/2 left-16 w-14 h-14 rounded-lg bg-indigo-100/40 rotate-45"
+    />
 
-      <a 
-        href="tel:+14373241211" 
-        className="flex items-center gap-4 p-4 rounded-xl bg-purple-50/50 hover:bg-purple-100/70 transition-colors group"
-      >
-        <div className="w-12 h-12 rounded-full bg-purple-700 flex items-center justify-center text-white text-xl group-hover:scale-110 transition-transform">
-          📞
-        </div>
-        <div>
-          <p className="text-sm text-purple-700 font-medium">Phone</p>
-          <p className="text-gray-700">+1 (437) 324-1211</p>
-        </div>
-      </a>
+    {/* Small dots */}
+    <motion.div
+      animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }}
+      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+      className="absolute top-24 left-1/3 w-4 h-4 rounded-full bg-purple-400/40"
+    />
+    <motion.div
+      animate={{ scale: [1, 1.2, 1], opacity: [0.4, 0.7, 0.4] }}
+      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+      className="absolute bottom-40 right-1/3 w-3 h-3 rounded-full bg-purple-500/30"
+    />
+    <motion.div
+      animate={{ scale: [1, 1.4, 1], opacity: [0.3, 0.5, 0.3] }}
+      transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+      className="absolute top-1/3 right-16 w-5 h-5 rounded-full bg-indigo-400/30"
+    />
 
-      <div className="flex items-center gap-4 p-4 rounded-xl bg-purple-50/50">
-        <div className="w-12 h-12 rounded-full bg-purple-700 flex items-center justify-center text-white text-xl">
-          📍
-        </div>
-        <div>
-          <p className="text-sm text-purple-700 font-medium">Location</p>
-          <p className="text-gray-700">McMaster University, Hamilton, ON</p>
+    {/* Gradient blur orbs */}
+    <div className="absolute top-0 right-0 w-64 h-64 bg-purple-100/50 rounded-full blur-3xl" />
+    <div className="absolute bottom-0 left-0 w-72 h-72 bg-indigo-100/40 rounded-full blur-3xl" />
+  </div>
+
+  <div className="max-w-6xl mx-auto px-6">
+    <h2 className="text-5xl md:text-6xl font-semibold mb-10 text-center tracking-tight text-gray-900">
+      Contact
+    </h2>
+
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+      className="max-w-xl mx-auto bg-white/80 backdrop-blur-sm rounded-2xl border border-purple-200 shadow-lg shadow-purple-100/50 p-8"
+    >
+      <div className="flex flex-col gap-5">
+        <a 
+          href="mailto:andrekylerebello@gmail.com" 
+          className="flex items-center gap-4 p-4 rounded-xl bg-purple-50/50 hover:bg-purple-100/70 transition-colors group"
+        >
+          <div className="w-12 h-12 rounded-full bg-purple-700 flex items-center justify-center text-white text-xl group-hover:scale-110 transition-transform">
+            ✉
+          </div>
+          <div>
+            <p className="text-sm text-purple-700 font-medium">Email</p>
+            <p className="text-gray-700">andrekylerebello@gmail.com</p>
+          </div>
+        </a>
+
+        <a 
+          href="tel:+14373241211" 
+          className="flex items-center gap-4 p-4 rounded-xl bg-purple-50/50 hover:bg-purple-100/70 transition-colors group"
+        >
+          <div className="w-12 h-12 rounded-full bg-purple-700 flex items-center justify-center text-white text-xl group-hover:scale-110 transition-transform">
+            📞
+          </div>
+          <div>
+            <p className="text-sm text-purple-700 font-medium">Phone</p>
+            <p className="text-gray-700">+1 (437) 324-1211</p>
+          </div>
+        </a>
+
+        <div className="flex items-center gap-4 p-4 rounded-xl bg-purple-50/50">
+          <div className="w-12 h-12 rounded-full bg-purple-700 flex items-center justify-center text-white text-xl">
+            📍
+          </div>
+          <div>
+            <p className="text-sm text-purple-700 font-medium">Location</p>
+            <p className="text-gray-700">McMaster University, Hamilton, ON</p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div className="flex justify-center gap-6 mt-8 pt-6 border-t border-purple-100">
-      {/* add your social links here */}
-    </div>
-  </motion.div>
+      <div className="flex justify-center gap-6 mt-8 pt-6 border-t border-purple-100">
+        {/* add your social links here */}
+      </div>
+    </motion.div>
+  </div>
 </section>
 
-      {/* Project Modal */}
-      <AnimatePresence>
-        {openProject && activeProject && (
-          <motion.div
-            className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center px-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+{/* Project Modal */}
+<AnimatePresence>
+  {openProject && activeProject && (
+    <motion.div
+      className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center px-6"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <motion.div
+        className="bg-white rounded-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto relative"
+        initial={{ scale: 0.95 }}
+        animate={{ scale: 1 }}
+        exit={{ scale: 0.95 }}
+      >
+        <button
+          onClick={() => setOpenProject(false)}
+          className="absolute top-4 right-4 z-50 text-gray-900 hover:text-gray-900 bg-white/90 rounded-full w-10 h-10 flex items-center justify-center transition shadow-md"
+        >
+          ✕
+        </button>
+
+        {/* Carousel */}
+        <div className="relative bg-gray-100">
+          {activeProject.mediaTypes?.[imageIndex] === "video" ? (
+            <video
+              src={activeProject.images[imageIndex]}
+              controls
+              autoPlay
+              loop
+              muted
+              className="w-full h-[400px] object-contain rounded-t-2xl"
+            />
+          ) : (
+            <Image
+              src={activeProject.images[imageIndex]}
+              alt={activeProject.title}
+              width={1200}
+              height={700}
+              className="w-full h-[400px] object-contain rounded-t-2xl"
+            />
+          )}
+          <button
+            onClick={prevImage}
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-purple-700/90 text-white px-4 py-2 rounded-full hover:bg-purple-800 transition"
           >
-            <motion.div
-              className="bg-white rounded-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto relative"
-              initial={{ scale: 0.95 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.95 }}
-            >
-              <button
-                onClick={() => setOpenProject(false)}
-                className="absolute top-4 right-4 z-50 text-gray-900 hover:text-gray-900 bg-white/90 rounded-full w-10 h-10 flex items-center justify-center transition shadow-md"
-              >
-                ✕
-              </button>
+            ◀
+          </button>
+          <button
+            onClick={nextImage}
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-purple-700/90 text-white px-4 py-2 rounded-full hover:bg-purple-800 transition"
+          >
+            ▶
+          </button>
+        </div>
 
-              {/* Carousel */}
-<div className="relative bg-gray-100">
-  {activeProject.mediaTypes?.[imageIndex] === "video" ? (
-    <video
-      src={activeProject.images[imageIndex]}
-      controls
-      autoPlay
-      loop
-      muted
-      className="w-full h-[400px] object-contain rounded-t-2xl"
-    />
-  ) : (
-    <Image
-      src={activeProject.images[imageIndex]}
-      alt={activeProject.title}
-      width={1200}
-      height={700}
-      className="w-full h-[400px] object-contain rounded-t-2xl"
-    />
+        {/* Scrollable Content */}
+        <div className="p-8 space-y-6">
+          <h3 className="text-3xl font-semibold text-gray-900">{activeProject.title}</h3>
+          <p className="text-gray-900">{activeProject.shortDescription}</p>
+          <p className="text-gray-900 whitespace-pre-line">{activeProject.longDescription}</p>
+          <Link
+            href={activeProject.github}
+            target="_blank"
+            className="inline-block text-purple-700 hover:text-purple-900 hover:underline text-lg font-medium"
+          >
+            View Source Code on GitHub →
+          </Link>
+        </div>
+      </motion.div>
+    </motion.div>
   )}
-  <button
-    onClick={prevImage}
-    className="absolute left-4 top-1/2 -translate-y-1/2 bg-purple-700/90 text-white px-4 py-2 rounded-full hover:bg-purple-800 transition"
-  >
-    ◀
-  </button>
-  <button
-    onClick={nextImage}
-    className="absolute right-4 top-1/2 -translate-y-1/2 bg-purple-700/90 text-white px-4 py-2 rounded-full hover:bg-purple-800 transition"
-  >
-    ▶
-  </button>
-</div>
-
-              {/* Scrollable Content */}
-              <div className="p-8 space-y-6">
-                <h3 className="text-3xl font-semibold text-gray-900">{activeProject.title}</h3>
-                <p className="text-gray-900">{activeProject.shortDescription}</p>
-                <p className="text-gray-900 whitespace-pre-line">
-    {activeProject.longDescription}
-  </p>
-                <Link
-                  href={activeProject.github}
-                  target="_blank"
-                  className="inline-block text-purple-700 hover:text-purple-900 hover:underline text-lg font-medium"
-                >
-                  View Source Code on GitHub →
-                </Link>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </main>
-  );
+</AnimatePresence>
+</main>
+);
 }
