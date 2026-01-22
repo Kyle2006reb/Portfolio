@@ -10,7 +10,7 @@ export default function IntroHero() {
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const phrases = ["Computer Engineering Student.", "Seeking Summer 2026 Internships."];
+  const phrases = ["Computer Engineering @ McMaster University.", "Seeking Summer 2026 Internships."];
 
   const { scrollYProgress } = useScroll({
     target: ref,

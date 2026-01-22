@@ -20,7 +20,17 @@ export default function Navbar() {
   useEffect(() => {
     // Scroll detection using scroll event
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 150; // Offset for navbar height
+      const scrollPosition = window.scrollY + 200; // Increased offset for better detection
+      
+      // Get the current scroll position relative to document height
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      
+      // If we're at the bottom of the page, activate the last section
+      if (window.scrollY + windowHeight >= documentHeight - 50) {
+        setActiveSection("contact");
+        return;
+      }
 
       // Find which section we're currently in
       for (let i = navLinks.length - 1; i >= 0; i--) {
@@ -29,9 +39,8 @@ export default function Navbar() {
         
         if (section) {
           const sectionTop = section.offsetTop;
-          const sectionBottom = sectionTop + section.offsetHeight;
           
-          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          if (scrollPosition >= sectionTop) {
             setActiveSection(sectionId);
             break;
           }
@@ -39,13 +48,16 @@ export default function Navbar() {
       }
     };
 
-    // Set initial active section
-    handleScroll();
+    // Set initial active section with a small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      handleScroll();
+    }, 100);
 
     // Listen to scroll events
     window.addEventListener("scroll", handleScroll, { passive: true });
     
     return () => {
+      clearTimeout(timer);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
@@ -68,7 +80,7 @@ export default function Navbar() {
       // Update active section immediately on click
       setActiveSection(sectionId);
     } else {
-      console.warn(`Section with id "${sectionId}" not found`);
+      console.error(`Section with id "${sectionId}" not found. Make sure you have elements with these IDs in your page.`);
     }
   };
 

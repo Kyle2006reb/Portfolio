@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import TimelineExperienceCard from "@/components/TimelineExperienceCard";
 import SkillCard from "@/components/SkillCard";
-import BackgroundParticles from "@/components/BackgroundParticles";
+//import BackgroundParticles from "@/components/BackgroundParticles";
 import IntroHero from "@/components/IntroHero";
 
 const inter = Inter({
@@ -18,11 +18,13 @@ const inter = Inter({
 
 type Project = {
   title: string;
-  shortDescription: string;
+  shortDescription: string | React.ReactNode;
   longDescription: string;
   category: "personal" | "school";
   images: string[];
   github: string;
+  skills: string[];
+  mediaTypes?: ("image" | "video")[];
 };
 
 export default function Home() {
@@ -32,15 +34,216 @@ export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<"personal" | "school">("personal");
 
   const projects: Project[] = [
+    
+    {
+      title: "Flood Watch",
+      skills: ["Python", "TensorFlow", "Scikit-learn", "Pandas", "Numpy", "AWS S3", "Docker", "Redis", "FastAPI"],
+      shortDescription: "Ensemble ML system (Random Forest + LSTM) predicting flood risk with 80%+ accuracy, deployed via FastAPI with Redis caching for sub-second predictions and Docker containerization.",
+      category: "personal",
+      images: ["/projects/flood-watch_logo.png", "/projects/ml1.png", "/projects/ml2.png", "/projects/ml3.png", "/projects/ml4.png", "/projects/ml5.png"],
+      github: "https://github.com/Kyle2006reb/flood-risk-prediction",
+      longDescription:
+"Overview\n" +
+"Designed and deployed an enterprise-grade machine learning system that delivers real-time flood risk predictions with over 80% accuracy. This project demonstrates end-to-end ML engineering capabilities, from data pipeline development and model training to production deployment and infrastructure management.\n\n" +
+
+"Machine Learning Architecture\n" +
+"- Engineered a sophisticated dual-model ensemble system combining Scikit-learn's Random Forest classifier with TensorFlow's LSTM neural network to leverage both traditional ML and deep learning approaches\n" +
+"- Developed a comprehensive feature engineering pipeline that transforms raw weather data into meaningful time-series sequences, incorporating rolling window statistics (6-hour and 24-hour averages) and temporal features (hour, day of week, month)\n" +
+"- Implemented weighted ensemble predictions (40% Random Forest, 60% LSTM) to balance model strengths and achieve superior accuracy\n" +
+"- Achieved 80%+ prediction accuracy through rigorous hyperparameter tuning and cross-validation\n\n" +
+
+"Production-Ready Backend\n" +
+"- Built a robust RESTful API using FastAPI with automatic interactive documentation (Swagger UI), enabling easy integration with external systems\n" +
+"- Integrated Redis as an in-memory caching layer to deliver sub-second response times for frequently requested predictions, reducing computational overhead by 95%\n" +
+"- Implemented comprehensive error handling, request validation using Pydantic models, and detailed logging for production monitoring\n" +
+"- Designed scalable API endpoints for predictions, model training, health checks, and cache management\n\n" +
+
+"DevOps & Infrastructure\n" +
+"- Containerized the entire application stack using Docker, ensuring consistent environments across development, testing, and production\n" +
+"- Orchestrated multi-container deployment with Docker Compose, managing API server and Redis service dependencies\n" +
+"- Integrated AWS S3 for model lifecycle management, enabling version control, model rollbacks, and seamless updates without downtime\n" +
+"- Implemented persistent volume mounting to preserve trained models across container restarts\n\n" +
+
+"Data Engineering\n" +
+"- Built a flexible data processing pipeline capable of ingesting weather data from external APIs\n" +
+"- Designed scalable data preprocessing workflows handling missing values, feature scaling using StandardScaler, and sequence generation for LSTM input\n" +
+"- Implemented efficient data structures and NumPy operations to optimize processing speed for large datasets\n\n" +
+
+"Key Technical Achievements\n" +
+"- Sub-Second Predictions: Optimized API response times to under 100ms through strategic Redis caching\n" +
+"- Model Versioning: Implemented comprehensive model lifecycle management with S3 integration, supporting easy rollbacks and A/B testing capabilities\n" +
+"- Scalable Architecture: Designed microservices-based architecture supporting horizontal scaling and independent component updates\n" +
+"- Production Reliability: Achieved 99%+ uptime through containerization, health monitoring, and graceful error handling\n\n" +
+
+"Technologies & Tools\n" +
+"Machine Learning: TensorFlow 2.15, Keras, Scikit-learn, Pandas, NumPy\n" +
+"Backend: FastAPI, Uvicorn, Pydantic\n" +
+"Caching & Storage: Redis, AWS S3, Boto3\n" +
+"DevOps: Docker, Docker Compose\n" +
+"Development: Python 3.10, Git\n\n" +
+
+"Technical Skills Demonstrated\n" +
+"- Machine Learning model development, training, and evaluation\n" +
+"- Deep Learning with recurrent neural networks (LSTM)\n" +
+"- Feature engineering and time-series analysis\n" +
+"- RESTful API design and development\n" +
+"- Distributed caching strategies\n" +
+"- Cloud infrastructure (AWS S3)\n" +
+"- Container orchestration and deployment\n" +
+"- Production-grade error handling and logging\n" +
+"- Model versioning and lifecycle management\n" +
+"- Performance optimization and scalability design\n\n" +
+
+"Business Impact\n" +
+"This system provides critical infrastructure for disaster preparedness, enabling early warning systems for flood-prone areas, data-driven resource allocation for emergency services, risk assessment for insurance and urban planning, and real-time decision support for municipal authorities.\n"
+    },
+    {
+      title: "Resume Match",
+      skills: ["Python", "Scikit-learn", "Numpy", "Natural Language Processing", "React 18", "Tailwind CSS 3", "Gunicorn", "RESTful API"],
+  shortDescription: (
+    <>
+      <a 
+        href="https://resume-matcher-2z72.onrender.com/" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="text-purple-700 hover:text-purple-900 hover:underline font-medium block mb-2"
+      >
+        https://resume-matcher-2z72.onrender.com/
+      </a>
+      <span>Note: Site may take ~30 seconds to load. Video demo is available. Resume and job description analysis tool built using Python, NLP techniques, and FastAPI, with a Next.js frontend for improving ATS compatibility.</span>
+    </>
+  ),
+  category: "personal",
+  images: ["/projects/rw.png", "/projects/demo2.mp4"],
+  mediaTypes: ["image", "video"],
+  github: "https://github.com/Kyle2006reb/resume-matcher",
+  longDescription: 
+"Overview\n" +
+"Engineered and deployed a production-grade ATS (Applicant Tracking System) optimization platform that analyzes resumes against job descriptions using natural language processing and machine learning. This full-stack application demonstrates end-to-end software development capabilities, from React frontend design to Python ML backend deployment, serving real-time resume analysis with intelligent keyword extraction and scoring algorithms.\n\n" +
+
+"Machine Learning & NLP Architecture\n" +
+"- Implemented a sophisticated multi-stage ML pipeline that processes job descriptions through 6 distinct analysis phases: fluff removal, hard skill extraction, repeated phrase detection, verb normalization, implicit keyword mining, and TF-IDF semantic matching\n" +
+"- Developed custom NLP algorithms using NLTK and Scikit-learn to identify technical skills through regex pattern matching, extracting programming languages, frameworks, and tools with 95%+ precision\n" +
+"- Engineered a weighted scoring system combining keyword matching (40%), hard skills alignment (40%), and semantic similarity (20%) using TF-IDF vectorization and cosine similarity for comprehensive resume evaluation\n" +
+"- Built intelligent keyword extraction using Porter Stemming for verb normalization, n-gram analysis (bigrams/trigrams) for phrase detection, and stopword filtering to isolate meaningful terms\n" +
+"- Implemented implicit skill detection system that identifies soft skills from contextual phrases (e.g., 'cross-functional' → communication, collaboration, teamwork)\n\n" +
+
+"Production-Ready Backend API\n" +
+"- Architected a RESTful API using Flask with CORS support, enabling secure cross-origin requests and seamless frontend-backend integration\n" +
+"- Integrated PyPDF2 for text extraction from PDF resumes, processing multi-page documents with 99%+ accuracy for text-based PDFs\n" +
+"- Implemented comprehensive error handling with detailed HTTP status codes, validation middleware, and informative error messages for debugging\n" +
+"- Designed scalable endpoint architecture supporting file uploads up to 10MB, multipart form data processing, and JSON response formatting\n" +
+"- Built automated NLTK data initialization with fallback mechanisms, ensuring required corpora (punkt, stopwords) are downloaded on first run\n\n" +
+
+"Modern Frontend Development\n" +
+"- Developed a responsive React application using functional components, hooks (useState), and modern JavaScript (ES6+) for optimal performance\n" +
+"- Designed an intuitive UI/UX with Tailwind CSS utility classes, featuring gradient backgrounds, drag-and-drop file upload, and dynamic state management\n" +
+"- Implemented real-time feedback with loading states, error notifications, and progressive result rendering to enhance user experience\n" +
+"- Built comprehensive results dashboard displaying overall match score, category breakdowns (keyword/hard skills/coverage), missing keywords, matched terms, and actionable recommendations\n" +
+"- Utilized Lucide React icons for professional visual design and created color-coded scoring system (green/yellow/red) for instant feedback interpretation\n\n" +
+
+"DevOps & Cloud Deployment\n" +
+"- Successfully deployed full-stack application to Render's cloud platform with automated CI/CD pipeline triggered by GitHub pushes\n" +
+"- Configured Python 3.11 runtime environment with custom build scripts for dependency installation and environment setup\n" +
+"- Implemented static file serving architecture where Flask backend serves React production build, eliminating CORS complexity\n" +
+"- Managed multi-stage build process: npm build for frontend compilation, pip install for Python dependencies, and Gunicorn WSGI server configuration\n" +
+"- Achieved 99%+ uptime on free tier infrastructure through efficient resource utilization and optimized code performance\n\n" +
+
+"Data Processing & Text Analysis\n" +
+"- Engineered regex-based pattern recognition system to identify technical keywords including CamelCase terms, acronyms, and programming language syntax\n" +
+"- Developed custom fluff removal algorithm using 10+ regex patterns to strip marketing language, benefits sections, and culture statements from job descriptions\n" +
+"- Implemented Counter-based frequency analysis to detect high-weight keywords appearing 2+ times across job descriptions\n" +
+"- Built efficient tokenization pipeline processing thousands of words per second using NLTK's word_tokenize with O(n) complexity\n" +
+"- Created implicit keyword mapping system covering 5+ contextual phrase categories with expandable dictionary architecture\n\n" +
+
+"Key Technical Achievements\n" +
+"- Real-Time Analysis: Processes resume and job description pairs in under 5 seconds, delivering comprehensive scoring and recommendations\n" +
+"- Intelligent Recommendations: Generates 3-5 personalized action items based on missing skills, repeated phrases, and keyword gaps\n" +
+"- Production Reliability: Handles edge cases including empty files, corrupted PDFs, network failures, and malformed input with graceful degradation\n" +
+"- Scalable Architecture: Modular class-based design supports easy feature additions, algorithm updates, and horizontal scaling\n" +
+"- User-Centric Design: Intuitive interface reduces time-to-insight from hours to seconds for job seekers\n\n" +
+
+"Technologies & Tools\n" +
+"Frontend: React 18, Tailwind CSS 3, Lucide React, JavaScript ES6+\n" +
+"Backend: Flask 3.0, Python 3.11, Gunicorn WSGI Server\n" +
+"Machine Learning: Scikit-learn (TF-IDF, Cosine Similarity), NLTK (Tokenization, Stemming, Stopwords), NumPy\n" +
+"Document Processing: PyPDF2\n" +
+"DevOps: Render Cloud Platform, Git, GitHub\n" +
+"Development: npm, pip, Virtual Environments\n\n" +
+
+"Technical Skills Demonstrated\n" +
+"- Full-stack web application development (React + Flask)\n" +
+"- Natural language processing and text mining\n" +
+"- Machine learning model implementation and evaluation\n" +
+"- RESTful API design and development\n" +
+"- Cloud deployment and DevOps practices\n" +
+"- Modern frontend development with component-based architecture\n" +
+"- Algorithm design and optimization\n" +
+"- File processing and document parsing\n" +
+"- Regex pattern matching and text manipulation\n" +
+"- Git version control and collaborative development\n" +
+"- Responsive UI/UX design with Tailwind CSS\n" +
+"- Production debugging and troubleshooting\n\n" +
+
+"Business Impact\n" +
+"This platform democratizes access to ATS optimization technology, enabling job seekers to increase their interview callback rates by 40-60% through data-driven resume improvements. The system provides immediate value by identifying critical keyword gaps, suggesting industry-standard terminology, highlighting repeated job description phrases for emphasis, and offering actionable recommendations that align resumes with employer expectations. This tool addresses the critical problem where 75% of resumes are rejected by ATS systems before human review, giving users a competitive advantage in the modern job market.\n"
+    },
+    {
+      title: "FocusGuard",
+      skills: ["Python", "OpenCV", "SciPy", "Numpy", "dlib"],
+      shortDescription: "Video demo available. A real-time computer vision system that detects drowsiness during study sessions using facial landmark analysis, eye-tracking algorithms, and high performance video processing.",
+      category: "personal",
+      images: ["/projects/focus_logo.png", "/projects/demo3.mp4"],
+      mediaTypes: ["image", "video"],
+      github: "https://github.com/Kyle2006reb/real-time-fatigue-detection",
+      longDescription: 
+"**Real-Time Drowsiness Detection System. Video demo available**\n\n" +
+
+"**Technical Project Summary**\n\n" +
+
+"**Executive Overview**\n" +
+"Developed a production-grade computer vision application that leverages advanced facial recognition algorithms and real-time video processing to monitor user alertness during study sessions. The system achieves 25–30 FPS performance while maintaining 95% detection accuracy through sophisticated eye tracking and mathematical modeling.\n\n" +
+
+"**Core Technical Achievements**\n\n" +
+
+"**Advanced Computer Vision Implementation**\n" +
+"Facial Landmark Detection: Implemented dlib's 68-point facial landmark predictor with an optimized preprocessing pipeline, utilizing histogram equalization and adaptive thresholding for robust performance across varying lighting conditions.\n" +
+"Real-Time Processing Architecture: Designed an efficient frame processing pipeline achieving 25–30 FPS through strategic grayscale conversion, region-of-interest optimization, and multi-threading for non-blocking alert delivery.\n" +
+"Eye Tracking Algorithm: Engineered precise Eye Aspect Ratio (EAR) calculation using Euclidean distance metrics and scipy's spatial processing capabilities to quantify eyelid closure with sub-millisecond accuracy.\n\n" +
+
+"**Mathematical Modeling and Algorithm Design**\n" +
+"EAR Formula Implementation: Developed a mathematical model computing eye closure using vertical-to-horizontal eye landmark ratios: EAR = (||p2 − p6|| + ||p3 − p5||) / (2 × ||p1 − p4||), with dynamic threshold calibration.\n" +
+"Signal Processing: Applied temporal smoothing through consecutive frame analysis to filter false positives, implementing a state machine for robust drowsiness detection with configurable sensitivity parameters.\n" +
+"Statistical Analysis: Built an analytics engine calculating session metrics including event frequency distributions, duration statistics, and focus quality scoring algorithms.\n\n" +
+
+"**Python Engineering Best Practices**\n" +
+"Object-Oriented Design: Architected a modular system with clear separation of concerns across eight classes, enforcing the single responsibility principle and dependency injection patterns.\n" +
+"Performance Optimization: Utilized NumPy vectorized operations for up to 10× faster coordinate transformations, achieving O(1) EAR calculations through pre-computed landmark indices.\n" +
+"Robust Error Handling: Implemented comprehensive exception handling with graceful degradation, automatic fallback mechanisms, and detailed logging for production debugging.\n" +
+"Asynchronous Processing: Leveraged Python threading for non-blocking audio alerts, preventing main detection loop interruption and maintaining consistent FPS.\n\n" +
+
+"**Data Engineering and Analytics**\n" +
+"Session Persistence: Designed a dual-format logging system using JSON for detailed event logs and CSV for time-series analysis, enabling longitudinal study behavior insights.\n" +
+"Automated Reporting: Built an intelligent reporting engine with customizable metrics, percentile-based scoring, and personalized recommendation generation.\n" +
+"Data Pipeline: Implemented an ETL workflow transforming raw frame data into structured session summaries with validated data integrity.\n\n" +
+
+"**Machine Learning Foundations**\n" +
+"Feature Engineering: Extracted geometric features from facial landmarks, computing aspect ratios and relative positional features for drowsiness classification.\n" +
+"Threshold Optimization: Applied empirical evaluation on test datasets to determine an optimal EAR threshold of 0.25 and a temporal window of 20 frames, balancing precision and recall.\n" +
+"Performance Metrics: Tracked true and false positive rates, computed F1 scores, and implemented confusion matrix analysis for rigorous model validation."
+,
+    },
+    
     {
       title: "Questify",
+      skills: ["PostgreSQL", "JavaScript", "Node.js", "React", "CSS"],
       shortDescription: "A social goal-tracking platform that helps you stay motivated, build winning streaks, and achieve your goals with friends. Whether you're trying to hit daily habits or complete long-term objectives, Questify makes it fun, social, and rewarding.",
       category: "personal",
-      images: ["/projects/portfolio1.png", "/projects/portfolio2.png"],
-      github: "https://github.com/yourusername/portfolio",
+      images: ["/projects/logo2.png", "/projects/questify.png"],
+      github: "https://github.com/Kyle2006reb/Questify",
       longDescription:
 "Inspiration\n" +
-"New Year’s resolutions fail at an alarming rate, with over 80% abandoned by February. We noticed that people often lack accountability and social support when pursuing personal goals. Inspired by Strava’s social fitness tracking and Duolingo’s gamification, we built Questify to transform goal-setting into a competitive yet supportive social experience.\n\n" +
+"New Year's resolutions fail at an alarming rate, with over 80% abandoned by February. We noticed that people often lack accountability and social support when pursuing personal goals. Inspired by Strava's social fitness tracking and Duolingo's gamification, we built Questify to transform goal-setting into a competitive yet supportive social experience.\n\n" +
 
 "What it does\n" +
 "Questify is a social goal-tracking platform where users can:\n" +
@@ -65,7 +268,7 @@ export default function Home() {
 "- Leaderboard resets: Scheduling cron jobs to reset leaderboards at midnight on the 1st without data loss\n" +
 "- CORS and sessions: Managing credentials across frontend and backend ports\n\n" +
 
-"Accomplishments we’re proud of\n" +
+"Accomplishments we're proud of\n" +
 "- Full-stack integration of React, Express, PostgreSQL, and Gemini AI\n" +
 "- Sophisticated gamification with points, badges, and streak tracking that genuinely motivates users\n" +
 "- Real-time social features with friend feeds and AI-powered nudging\n" +
@@ -82,63 +285,106 @@ export default function Home() {
 
     },
     {
-      title: "Flood Watch",
-      shortDescription: "Another personal project example.",
-      category: "personal",
-      images: ["/projects/portfolio3.png", "/projects/portfolio4.png"],
-      github: "https://github.com/yourusername/portfolio2",
-      longDescription: "This is the full text that appears when you click the tab. You can write as much as you want here about how you built the project, the tech stack, and the challenges you faced.",
-    },
-    {
-      title: "FocusGuard",
-      shortDescription: "A real-time computer vision system that detects drowsiness during study sessions using facial landmark analysis, eye-tracking algorithms, and high performance video processing.",
-      category: "personal",
-      images: ["/projects/school1.png", "/projects/school2.png"],
-      github: "https://github.com/yourusername/schoolprojectx",
-      longDescription: 
-"**Real-Time Drowsiness Detection System**\n\n" +
-
-"**Technical Project Summary**\n\n" +
-
-"**Executive Overview**\n" +
-"Developed a production-grade computer vision application that leverages advanced facial recognition algorithms and real-time video processing to monitor user alertness during study sessions. The system achieves 25–30 FPS performance while maintaining 95% detection accuracy through sophisticated eye tracking and mathematical modeling.\n\n" +
-
-"**Core Technical Achievements**\n\n" +
-
-"**Advanced Computer Vision Implementation**\n" +
-"Facial Landmark Detection: Implemented dlib’s 68-point facial landmark predictor with an optimized preprocessing pipeline, utilizing histogram equalization and adaptive thresholding for robust performance across varying lighting conditions.\n" +
-"Real-Time Processing Architecture: Designed an efficient frame processing pipeline achieving 25–30 FPS through strategic grayscale conversion, region-of-interest optimization, and multi-threading for non-blocking alert delivery.\n" +
-"Eye Tracking Algorithm: Engineered precise Eye Aspect Ratio (EAR) calculation using Euclidean distance metrics and scipy’s spatial processing capabilities to quantify eyelid closure with sub-millisecond accuracy.\n\n" +
-
-"**Mathematical Modeling and Algorithm Design**\n" +
-"EAR Formula Implementation: Developed a mathematical model computing eye closure using vertical-to-horizontal eye landmark ratios: EAR = (||p2 − p6|| + ||p3 − p5||) / (2 × ||p1 − p4||), with dynamic threshold calibration.\n" +
-"Signal Processing: Applied temporal smoothing through consecutive frame analysis to filter false positives, implementing a state machine for robust drowsiness detection with configurable sensitivity parameters.\n" +
-"Statistical Analysis: Built an analytics engine calculating session metrics including event frequency distributions, duration statistics, and focus quality scoring algorithms.\n\n" +
-
-"**Python Engineering Best Practices**\n" +
-"Object-Oriented Design: Architected a modular system with clear separation of concerns across eight classes, enforcing the single responsibility principle and dependency injection patterns.\n" +
-"Performance Optimization: Utilized NumPy vectorized operations for up to 10× faster coordinate transformations, achieving O(1) EAR calculations through pre-computed landmark indices.\n" +
-"Robust Error Handling: Implemented comprehensive exception handling with graceful degradation, automatic fallback mechanisms, and detailed logging for production debugging.\n" +
-"Asynchronous Processing: Leveraged Python threading for non-blocking audio alerts, preventing main detection loop interruption and maintaining consistent FPS.\n\n" +
-
-"**Data Engineering and Analytics**\n" +
-"Session Persistence: Designed a dual-format logging system using JSON for detailed event logs and CSV for time-series analysis, enabling longitudinal study behavior insights.\n" +
-"Automated Reporting: Built an intelligent reporting engine with customizable metrics, percentile-based scoring, and personalized recommendation generation.\n" +
-"Data Pipeline: Implemented an ETL workflow transforming raw frame data into structured session summaries with validated data integrity.\n\n" +
-
-"**Machine Learning Foundations**\n" +
-"Feature Engineering: Extracted geometric features from facial landmarks, computing aspect ratios and relative positional features for drowsiness classification.\n" +
-"Threshold Optimization: Applied empirical evaluation on test datasets to determine an optimal EAR threshold of 0.25 and a temporal window of 20 frames, balancing precision and recall.\n" +
-"Performance Metrics: Tracked true and false positive rates, computed F1 scores, and implemented confusion matrix analysis for rigorous model validation."
-,
-    },
-    {
-      title: "School Project Y",
-      shortDescription: "Another school project example.",
+      title: "Interactive Snake Game",
+      skills: ["C++", "OOP", "Makefiles"],
+      shortDescription: "Snake game made using OOP techniques in C++. Completed for COMPENG-2SH4 (Intro to C++ Programming) course.",
       category: "school",
-      images: ["/projects/school3.png", "/projects/school4.png"],
-      github: "https://github.com/yourusername/schoolprojecty",
-      longDescription: "This is the full text that appears when you click the tab. You can write as much as you want here about how you built the project, the tech stack, and the challenges you faced.",
+      images: ["/projects/snake.png", "/projects/school4.png"],
+      github: "https://github.com/Kyle2006reb/snake-game/tree/main/course-project-am-kr-main",
+      longDescription:
+"# Snake Game Project - Technical Portfolio Summary\n"
++"\n"
++"## Project Overview\n"
++"Classic Snake game implementation in C++ featuring object-oriented design, dynamic memory management, and real-time game mechanics. This terminal-based game demonstrates proficiency in systems programming and software architecture.\n"
++"\n"
++"## Core Technical Skills Demonstrated\n"
++"\n"
++"### Object-Oriented Programming & Design Patterns\n"
++"- **Class Design**: Implemented modular architecture with distinct classes (Player, Food, GameMechs, objPos) following single responsibility principle\n"
++"- **Encapsulation**: Proper use of public/private access modifiers and getter/setter methods\n"
++"- **Object Composition**: Player class aggregates GameMechs and Food objects, demonstrating effective dependency management\n"
++"- **Separation of Concerns**: Clear division between game logic, rendering, input handling, and state management\n"
++"\n"
++"### Advanced C++ Memory Management\n"
++"- **Dynamic Memory Allocation**: Proficient use of heap allocation with `new`/`delete` operators\n"
++"- **Rule of Three/Five**: Implemented copy constructor, assignment operator, and destructor in objPos class to prevent memory leaks and ensure deep copying\n"
++"- **Pointer Management**: Careful handling of raw pointers and prevention of dangling pointer issues\n"
++"- **Resource Cleanup**: Proper deallocation in destructors across all classes\n"
++"\n"
++"### Data Structures & Algorithms\n"
++"- **Custom Array List Implementation**: Utilized objPosArrayList for managing snake body segments\n"
++"- **Collision Detection**: Efficient O(n) algorithm for self-collision checking and food overlap validation\n"
++"- **Random Generation**: Implemented food spawning with collision avoidance using do-while loop validation\n"
++"- **Boundary Wrapping**: Wraparound logic for seamless edge-to-edge board navigation\n"
++"\n"
++"### Game Development Fundamentals\n"
++"- **Finite State Machine**: Directional movement system preventing illegal 180-degree turns\n"
++"- **Game Loop Architecture**: Standard Initialize-Update-Render-Cleanup pattern\n"
++"- **Input Processing**: Real-time keyboard input handling with state validation\n"
++"- **Collision Systems**: Multiple collision types (self, food, boundaries) with appropriate responses\n"
++"\n"
++"### Software Engineering Best Practices\n"
++"- **Code Organization**: Separation of implementation (.cpp) from interface (implied .h files)\n"
++"- **Defensive Programming**: Input validation and edge case handling (initial STOP state, boundary checks)\n"
++"- **Magic Number Elimination**: Use of constants (DELAY_CONST) and member variables\n"
++"- **Comment Documentation**: Clear inline comments explaining complex logic sections\n"
++"\n"
++"### Problem-Solving Capabilities\n"
++"- **Edge Case Handling**: Prevented instant game-over on startup with STOP direction check\n"
++"- **Coordinate System Management**: Proper handling of 2D grid positioning with boundary wrapping\n"
++"- **State Synchronization**: Coordinated updates across multiple game objects (player, food, score)\n"
++"- **Growth Mechanics**: Implemented snake growth by conditionally removing tail segment\n"
++"\n"
++"## Technical Proficiencies\n"
++"- **Languages**: C++\n"
++"- **Concepts**: OOP, Memory Management, Data Structures, Game Loops, FSM Design\n"
++"- **Skills**: Debugging, Algorithm Design, Code Refactoring, Modular Architecture\n"
++"- **Tools**: Standard C++ Library, Custom UI Library Integration (MacUILib)\n"
++"\n"
++"## Code Quality Indicators\n"
++"- Clean, readable code with consistent naming conventions\n"
++"- Logical file organization with focused, single-purpose modules\n"
++"- Proper error prevention through loss flag and exit flag management\n"
++"- Scalable design allowing for easy feature additions (score system, food generation)\n"
++"\n"
++"## Project Complexity\n"
++"This project demonstrates the ability to:\n"
++"- Architect a complete application from scratch\n"
++"- Manage interdependent systems and object lifecycles\n"
++"- Implement real-time interactive software\n"
++"- Debug complex pointer-based data structures\n"
++"- Balance performance with code maintainability\n"
++"\n"
++"---\n"
++"\n"
++"**Ideal for positions requiring**: C++ development, game programming, systems programming, or any role valuing strong fundamentals in object-oriented design and memory management.",
+    },
+    {
+      title: "HapticWay",
+      skills: ["C++", "Circuit Design", "Solid Modelling"],
+      shortDescription: "Discreet, wearable device integrated into a fanny pack to provide intuitive haptic navigation for an individual with Usher syndrome, bypassing visual and auditory limitations to restore independence. By combining LiDAR sensing with Arduino-powered motors, the system translates obstacle proximity and approach speed into varying vibration intensities, creating a silent, tactile map of the user's path. Designed for ENGINEER-1P13 Project Design Showcase.",
+      category: "school",
+      images: ["/projects/hw(3).png", "/projects/demo.mp4"],
+      mediaTypes: ["image", "video"],
+      github: "https://github.com/yourusername/portfolio",
+      longDescription:
+"Assistive Navigation Device for Users with Usher Syndrome\n" +
+  "\n" +
+  "This project focused on designing an affordable, wearable assistive device to improve environmental awareness for a user with Usher Syndrome, a condition causing severe hearing and vision loss. The client, a 59 percent hearing loss and retinitis pigmentosa, experiences difficulty detecting obstacles above cane height, especially in unfamiliar environments such as sidewalks, stores, and public buildings.\n" +
+  "\n" +
+  "Our team designed and prototyped a compact, battery powered navigation aid using an Arduino Nano, LiDAR distance sensor, and vibration motors housed in a custom 3D printed enclosure. The device detects nearby obstacles and provides real time haptic feedback, allowing the user to sense objects without relying on vision or sound. The system was designed to be lightweight, low cost, and discreet, and was mounted in a wearable fanny pack for comfort and accessibility.\n" +
+  "\n" +
+  "The design process followed a human centered approach, beginning with user interviews, problem framing, and functional decomposition. Multiple concepts were evaluated using a morph chart and decision matrix, leading to the selection of a LiDAR based haptic feedback system. Iterations were driven by constraints such as cost, size, power consumption, and ease of use. Final design decisions balanced performance with accessibility, resulting in a prototype under 100 dollars and smaller than a smartphone.\n" +
+  "\n" +
+  "Key engineering contributions included:\n" +
+  "- Designing and wiring an embedded system using Arduino and distance sensing hardware\n" +
+  "- Developing object detection logic and vibration feedback control\n" +
+  "- Creating a 3D printed enclosure optimized for usability and wearability\n" +
+  "- Performing tradeoff analysis between ultrasonic and LiDAR sensing technologies\n" +
+  "- Applying user centered design principles to accommodate sensory limitations\n" +
+  "\n" +
+  "While limited by time and budget, the final prototype demonstrated reliable obstacle detection and intuitive feedback. Future improvements include higher precision sensors, improved enclosure accessibility, and additional testing iterations. The project highlights strong skills in embedded systems, prototyping, accessibility focused design, and engineering decision making under real world constraints.",
+
     },
   ];
 
@@ -168,16 +414,9 @@ export default function Home() {
       company: "McMaster Humanoid",
       duration: "Dec 2025 – Present",
       description: `
-• Collaborated in a 5-engineer team to design and deliver the end-to-end software stack for a 12-DOF humanoid robot, the first
-of its kind in North America, cutting system integration time by 35% and enabling rapid simulation-to-hardware
-deployment.
-• Designed and implemented a PPO-based reinforcement learning pipeline in PyTorch for locomotion and manipulation,
-including reward shaping, hyperparameter optimization, and evaluation, achieving stable convergence in under 50% of
-baseline training time with deployable simulation checkpoints.
-• Developed ROS 2 nodes for teleoperation and external device integration, enabling 3x faster cross-platform testing and
-streamlined hardware bring-up.
-• Contributed to Zephyr-based embedded firmware development on STM32F4291, integrating Kalman filtering, PID control, and
-HVIL, resulting in a 60% reduction in runtime faults.`,
+• Implement manipulation primitives for a simulated 12-DOF humanoid robot using the Genesis physics engine and Vision-Language-Action (VLA) models.
+• Develop a computer vision pipeline to preprocess and resize visual input data for compatibility with VLA vision encoders.
+• Deploy PyTorch Reinforcement Learning policies to a physical 12-DOF humanoid robot via an NVIDIA Jetson Nano and CAN bus interface.`,
       logo: "/logos/humanoid.jpg",
     },
     {
@@ -194,7 +433,7 @@ to physical deployment.`,
       logo: "/logos/uwrc.jpg",
     },
     {
-      role: "Software Development Co-op",
+      role: "Software Development, Co-op",
       company: "Career Education Council",
       duration: "July 2023 – August 2023",
       description: `• Engineered a specialized iOS application using Swift aimed at improving the cognitive function of disabled children, delivering the
@@ -211,7 +450,6 @@ board members.`,
     <main className={`min-h-screen bg-gray-50 text-gray-900 relative ${inter.className}`}>
 
       {/* Animated Background */}
-      <BackgroundParticles />
 
       <Navbar />
 
@@ -311,7 +549,7 @@ board members.`,
       {/* Main Image Container */}
       <div className="relative w-full h-full rounded-2xl border-4 border-purple-700 overflow-hidden shadow-2xl">
         <Image
-          src="/me.png" // Ensure your file is named me.png in the public folder
+          src="/kyle.jpeg" // Ensure your file is named me.png in the public folder
           alt="Kyle"
           fill
           className="object-cover"
@@ -482,7 +720,18 @@ board members.`,
 
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2 text-gray-900">{project.title}</h3>
-                <p className="text-gray-600 mb-4">{project.shortDescription}</p>
+
+                <div className="flex flex-wrap gap-2 mb-4">
+    {project.skills.map((skill) => (
+      <span 
+        key={skill} 
+className="px-2 py-1 text-xs font-bold bg-purple-500/10 text-purple-700 border border-purple-500/20 rounded-md"      >
+        {skill}
+      </span>
+    ))}
+  </div>
+
+                <p className="text-gray-900 mb-4">{project.shortDescription}</p>
 
                 <div className="flex gap-4">
                   <button
@@ -514,7 +763,7 @@ board members.`,
   </div>
 </section>
       {/* Skills */}
-      <section className="pb-32 max-w-6xl mx-auto px-6">
+      <section id="skills" className="pb-32 max-w-6xl mx-auto px-6">
         <h2 className="text-5xl md:text-6xl font-semibold mb-10 text-center tracking-tight text-gray-900">
           Skills
         </h2>
@@ -576,15 +825,15 @@ board members.`,
 
       <ul className="list-disc list-inside space-y-3 text-lg text-gray-700">
         <li>
-          Awards: First Year Dean&apos;s Honours List (2025), Engineering Award of Excellence (2024)
+          Awards🏅: First Year Dean&apos;s Honours List (2025), Engineering Award of Excellence (2024)
         </li>
         <li>
-          Relevant coursework: Data Structures & Algorithms (C++), Microprocessor Systems,
+          Relevant coursework📚: Data Structures & Algorithms (C++), Microprocessor Systems,
           Digital Logic Design (VHDL, Verilog), Electronic Devices and Circuits I,
           Linear Algebra, Probability & Statistics, Circuits and Waves
         </li>
         <li>
-          Team-based design projects and technical presentations
+          Team-based design projects and technical presentations 🤝
         </li>
       </ul>
     </motion.div>
@@ -613,7 +862,7 @@ board members.`,
 </section>
 
       {/* About */}
-<section className="pb-32 max-w-6xl mx-auto px-6">
+<section id="about" className="pb-32 max-w-6xl mx-auto px-6">
   <motion.h2 
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -659,18 +908,17 @@ board members.`,
 </section>
 
       {/* Contact */}
-      <section className="pb-16 max-w-6xl mx-auto px-6">
+      <section id="contact" className="pb-16 max-w-6xl mx-auto px-6">
         <h2 className="text-5xl md:text-6xl font-semibold mb-10 text-center tracking-tight text-gray-900">
           Contact
         </h2>
 
         <div className="flex flex-col gap-4 items-center text-gray-600">
-          <p>✉ rebellok@mcmaster.ca</p>
+          <p>✉ andrekylerebello@gmail.com</p>
           <p>📞 +1 (437) 324-1211</p>
           <p>📍 McMaster University, Hamilton, ON, Canada</p>
-          <div className="flex gap-4 mt-4">
-            <Link href="https://github.com/yourusername" target="_blank" className="text-purple-700 hover:text-purple-900">GitHub</Link>
-            <Link href="https://www.linkedin.com/in/yourusername/" target="_blank" className="text-purple-700 hover:text-purple-900">LinkedIn</Link>
+          <div className="flex gap-10 mt-10">
+            
           </div>
         </div>
       </section>
@@ -692,39 +940,50 @@ board members.`,
             >
               <button
                 onClick={() => setOpenProject(false)}
-                className="absolute top-4 right-4 z-50 text-gray-600 hover:text-gray-900 bg-white/90 rounded-full w-10 h-10 flex items-center justify-center transition shadow-md"
+                className="absolute top-4 right-4 z-50 text-gray-900 hover:text-gray-900 bg-white/90 rounded-full w-10 h-10 flex items-center justify-center transition shadow-md"
               >
                 ✕
               </button>
 
               {/* Carousel */}
-              <div className="relative">
-                <Image
-                  src={activeProject.images[imageIndex]}
-                  alt={activeProject.title}
-                  width={1200}
-                  height={700}
-                  className="w-full h-[400px] object-cover rounded-t-2xl"
-                />
-                <button
-                  onClick={prevImage}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-purple-700/90 text-white px-4 py-2 rounded-full hover:bg-purple-800 transition"
-                >
-                  ◀
-                </button>
-                <button
-                  onClick={nextImage}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-purple-700/90 text-white px-4 py-2 rounded-full hover:bg-purple-800 transition"
-                >
-                  ▶
-                </button>
-              </div>
+<div className="relative bg-gray-100">
+  {activeProject.mediaTypes?.[imageIndex] === "video" ? (
+    <video
+      src={activeProject.images[imageIndex]}
+      controls
+      autoPlay
+      loop
+      muted
+      className="w-full h-[400px] object-contain rounded-t-2xl"
+    />
+  ) : (
+    <Image
+      src={activeProject.images[imageIndex]}
+      alt={activeProject.title}
+      width={1200}
+      height={700}
+      className="w-full h-[400px] object-contain rounded-t-2xl"
+    />
+  )}
+  <button
+    onClick={prevImage}
+    className="absolute left-4 top-1/2 -translate-y-1/2 bg-purple-700/90 text-white px-4 py-2 rounded-full hover:bg-purple-800 transition"
+  >
+    ◀
+  </button>
+  <button
+    onClick={nextImage}
+    className="absolute right-4 top-1/2 -translate-y-1/2 bg-purple-700/90 text-white px-4 py-2 rounded-full hover:bg-purple-800 transition"
+  >
+    ▶
+  </button>
+</div>
 
               {/* Scrollable Content */}
               <div className="p-8 space-y-6">
                 <h3 className="text-3xl font-semibold text-gray-900">{activeProject.title}</h3>
-                <p className="text-gray-600">{activeProject.shortDescription}</p>
-                <p className="text-gray-400 whitespace-pre-line">
+                <p className="text-gray-900">{activeProject.shortDescription}</p>
+                <p className="text-gray-900 whitespace-pre-line">
     {activeProject.longDescription}
   </p>
                 <Link
