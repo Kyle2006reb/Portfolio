@@ -998,7 +998,7 @@ className="px-2 py-1 text-xs font-bold bg-purple-500/10 text-purple-700 border b
           </div>
           <div>
             <h3 className="text-2xl font-bold text-gray-900">Soccer ⚽</h3>
-            <p className="text-purple-700 font-medium text-lg">McMaster Men's Intramurals</p>
+            <p className="text-purple-700 font-medium text-lg">McMaster Men&apos;s Intramurals</p>
           </div>
         </div>
         
