@@ -190,47 +190,26 @@ export default function Home() {
     },
     {
       title: "FocusGuard",
-      skills: ["Python", "OpenCV", "SciPy", "Numpy", "dlib"],
+      skills: ["Python", "OpenCV", "MediaPipe", "Numpy"],
       shortDescription: "Video demo available. A real-time computer vision system that detects drowsiness during study sessions using facial landmark analysis, eye-tracking algorithms, and high performance video processing.",
       category: "personal",
       images: ["/projects/focus_logo.png", "/projects/demo3.mp4"],
       mediaTypes: ["image", "video"],
       github: "https://github.com/Kyle2006reb/real-time-fatigue-detection",
       longDescription: 
-"**Real-Time Drowsiness Detection System. Video demo available**\n\n" +
-
-"**Technical Project Summary**\n\n" +
-
-"**Executive Overview**\n" +
-"Developed a production-grade computer vision application that leverages advanced facial recognition algorithms and real-time video processing to monitor user alertness during study sessions. The system achieves 25–30 FPS performance while maintaining 95% detection accuracy through sophisticated eye tracking and mathematical modeling.\n\n" +
-
-"**Core Technical Achievements**\n\n" +
-
-"**Advanced Computer Vision Implementation**\n" +
-"Facial Landmark Detection: Implemented dlib's 68-point facial landmark predictor with an optimized preprocessing pipeline, utilizing histogram equalization and adaptive thresholding for robust performance across varying lighting conditions.\n" +
-"Real-Time Processing Architecture: Designed an efficient frame processing pipeline achieving 25–30 FPS through strategic grayscale conversion, region-of-interest optimization, and multi-threading for non-blocking alert delivery.\n" +
-"Eye Tracking Algorithm: Engineered precise Eye Aspect Ratio (EAR) calculation using Euclidean distance metrics and scipy's spatial processing capabilities to quantify eyelid closure with sub-millisecond accuracy.\n\n" +
-
-"**Mathematical Modeling and Algorithm Design**\n" +
-"EAR Formula Implementation: Developed a mathematical model computing eye closure using vertical-to-horizontal eye landmark ratios: EAR = (||p2 − p6|| + ||p3 − p5||) / (2 × ||p1 − p4||), with dynamic threshold calibration.\n" +
-"Signal Processing: Applied temporal smoothing through consecutive frame analysis to filter false positives, implementing a state machine for robust drowsiness detection with configurable sensitivity parameters.\n" +
-"Statistical Analysis: Built an analytics engine calculating session metrics including event frequency distributions, duration statistics, and focus quality scoring algorithms.\n\n" +
-
-"**Python Engineering Best Practices**\n" +
-"Object-Oriented Design: Architected a modular system with clear separation of concerns across eight classes, enforcing the single responsibility principle and dependency injection patterns.\n" +
-"Performance Optimization: Utilized NumPy vectorized operations for up to 10× faster coordinate transformations, achieving O(1) EAR calculations through pre-computed landmark indices.\n" +
-"Robust Error Handling: Implemented comprehensive exception handling with graceful degradation, automatic fallback mechanisms, and detailed logging for production debugging.\n" +
-"Asynchronous Processing: Leveraged Python threading for non-blocking audio alerts, preventing main detection loop interruption and maintaining consistent FPS.\n\n" +
-
-"**Data Engineering and Analytics**\n" +
-"Session Persistence: Designed a dual-format logging system using JSON for detailed event logs and CSV for time-series analysis, enabling longitudinal study behavior insights.\n" +
-"Automated Reporting: Built an intelligent reporting engine with customizable metrics, percentile-based scoring, and personalized recommendation generation.\n" +
-"Data Pipeline: Implemented an ETL workflow transforming raw frame data into structured session summaries with validated data integrity.\n\n" +
-
-"**Machine Learning Foundations**\n" +
-"Feature Engineering: Extracted geometric features from facial landmarks, computing aspect ratios and relative positional features for drowsiness classification.\n" +
-"Threshold Optimization: Applied empirical evaluation on test datasets to determine an optimal EAR threshold of 0.25 and a temporal window of 20 frames, balancing precision and recall.\n" +
-"Performance Metrics: Tracked true and false positive rates, computed F1 scores, and implemented confusion matrix analysis for rigorous model validation."
+"## Real-Time Fatigue Detection System\n" +
+  "\n" +
+  "A computer vision application that monitors user alertness during study sessions using facial landmark detection and eye tracking, achieving 25-30 FPS performance with 95%+ detection accuracy.\n" +
+  "\n" +
+  "**Technical Implementation:**\n" +
+  "- Engineered Eye Aspect Ratio (EAR) algorithm using Euclidean distance metrics for precise drowsiness detection\n" +
+  "- Built real-time video processing pipeline with MediaPipe's 468-point facial mesh model\n" +
+  "- Implemented temporal filtering with consecutive frame analysis to minimize false positives\n" +
+  "- Designed automated session reporting with focus score analytics\n" +
+  "\n" +
+  "**Tech Stack:** Python, OpenCV, MediaPipe, NumPy\n" +
+  "\n" +
+  "**Skills Demonstrated:** Computer Vision, Real-Time Video Processing, Algorithm Design, Python OOP"
 ,
     },
     
