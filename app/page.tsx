@@ -1271,6 +1271,36 @@ className="px-2 py-1 text-xs font-bold bg-purple-500/10 text-purple-700 border b
     </svg>
   </div>
 
+
+<div className="absolute top-1/4 -left-20 opacity-[0.15] pointer-events-none select-none">
+    <svg 
+      width="500" 
+      height="500" 
+      viewBox="0 0 200 200" 
+      fill="none" 
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle 
+        cx="100" 
+        cy="100" 
+        r="80" 
+        stroke="#7214c5" 
+        strokeWidth="12" 
+        strokeDasharray="18 4" // This creates the "blocky" segments
+      />
+      <circle 
+        cx="100" 
+        cy="100" 
+        r="60" 
+        stroke="#7E22CE" 
+        strokeWidth="1" 
+        className="opacity-50"
+      />
+    </svg>
+  </div>
+
+
+
   <div className="max-w-6xl mx-auto px-6">
     <h2 className="text-5xl md:text-6xl font-semibold mb-10 text-center tracking-tight text-gray-900">
       Contact
