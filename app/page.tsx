@@ -1103,7 +1103,7 @@ className="px-2 py-1 text-xs font-bold bg-purple-500/10 text-purple-700 border b
 
 
       {/* About */}
-<section id="about" className="pb-32 pt-20 bg-purple-50/70">
+<section id="about" className="pb-32 pt-20 bg-purple-100/80">
   <div className="max-w-6xl mx-auto px-6">
     <motion.h2 
       initial={{ opacity: 0, y: 20 }}
@@ -1214,6 +1214,33 @@ className="px-2 py-1 text-xs font-bold bg-purple-500/10 text-purple-700 border b
     {/* Gradient blur orbs */}
     <div className="absolute top-0 right-0 w-64 h-64 bg-purple-100/50 rounded-full blur-3xl" />
     <div className="absolute bottom-0 left-0 w-72 h-72 bg-indigo-100/40 rounded-full blur-3xl" />
+  </div>
+
+<div className="absolute top-1/4 -right-20 opacity-[0.15] pointer-events-none select-none">
+    <svg 
+      width="500" 
+      height="500" 
+      viewBox="0 0 200 200" 
+      fill="none" 
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle 
+        cx="100" 
+        cy="100" 
+        r="80" 
+        stroke="#7E22CE" 
+        strokeWidth="12" 
+        strokeDasharray="18 4" // This creates the "blocky" segments
+      />
+      <circle 
+        cx="100" 
+        cy="100" 
+        r="60" 
+        stroke="#7E22CE" 
+        strokeWidth="1" 
+        className="opacity-50"
+      />
+    </svg>
   </div>
 
   <div className="max-w-6xl mx-auto px-6">
