@@ -17,25 +17,20 @@ export default function IntroHero() {
     offset: ["start start", "end start"],
   });
 
-  // Subtle parallax for background image
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
-  // Typing and untyping effect
   useEffect(() => {
     const currentPhrase = phrases[currentPhraseIndex];
     let timeout: NodeJS.Timeout;
 
     if (!isDeleting && typedText === currentPhrase) {
-      // Pause at end of phrase before deleting
       timeout = setTimeout(() => setIsDeleting(true), 2000);
     } else if (isDeleting && typedText === "") {
-      // Move to next phrase and start typing
       setIsDeleting(false);
       setCurrentPhraseIndex((prev) => (prev + 1) % phrases.length);
     } else {
-      // Type or delete one character
       const typingSpeed = isDeleting ? 50 : 100;
       timeout = setTimeout(() => {
         setTypedText((prev) => {
@@ -56,7 +51,6 @@ export default function IntroHero() {
       ref={ref}
       className="relative h-screen w-full overflow-hidden bg-black"
     >
-      {/* BACKGROUND IMAGE */}
       <motion.div
         style={{ y: bgY }}
         className="absolute inset-0"
@@ -71,12 +65,10 @@ export default function IntroHero() {
         />
       </motion.div>
 
-      {/* DARK OVERLAY FOR TEXT READABILITY */}
       <div className="absolute inset-0 bg-black/40" />
 
-      {/* HERO TEXT */}
       <motion.div
-        style={{ y: textY, opacity: textOpacity }}
+        style={{ y: textY, opacity: textOpacity } as any}
         className="relative z-10 flex h-full items-center justify-center px-6 text-center"
       >
         <div className="max-w-3xl">
