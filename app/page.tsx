@@ -292,81 +292,41 @@ export default function Home() {
       images: ["/projects/snake.png", "/projects/school4.png"],
       github: "https://github.com/Kyle2006reb/snake-game/tree/main/course-project-am-kr-main",
       longDescription:
-"# Snake Game Project - Technical Portfolio Summary\n"
-+"\n"
-+"## Project Overview\n"
-+"Classic Snake game implementation in C++ featuring object-oriented design, dynamic memory management, and real-time game mechanics. This terminal-based game demonstrates proficiency in systems programming and software architecture.\n"
-+"\n"
-+"## Core Technical Skills Demonstrated\n"
-+"\n"
-+"### Object-Oriented Programming & Design Patterns\n"
-+"- **Class Design**: Implemented modular architecture with distinct classes (Player, Food, GameMechs, objPos) following single responsibility principle\n"
-+"- **Encapsulation**: Proper use of public/private access modifiers and getter/setter methods\n"
-+"- **Object Composition**: Player class aggregates GameMechs and Food objects, demonstrating effective dependency management\n"
-+"- **Separation of Concerns**: Clear division between game logic, rendering, input handling, and state management\n"
-+"\n"
-+"### Advanced C++ Memory Management\n"
-+"- **Dynamic Memory Allocation**: Proficient use of heap allocation with `new`/`delete` operators\n"
-+"- **Rule of Three/Five**: Implemented copy constructor, assignment operator, and destructor in objPos class to prevent memory leaks and ensure deep copying\n"
-+"- **Pointer Management**: Careful handling of raw pointers and prevention of dangling pointer issues\n"
-+"- **Resource Cleanup**: Proper deallocation in destructors across all classes\n"
-+"\n"
-+"### Data Structures & Algorithms\n"
-+"- **Custom Array List Implementation**: Utilized objPosArrayList for managing snake body segments\n"
-+"- **Collision Detection**: Efficient O(n) algorithm for self-collision checking and food overlap validation\n"
-+"- **Random Generation**: Implemented food spawning with collision avoidance using do-while loop validation\n"
-+"- **Boundary Wrapping**: Wraparound logic for seamless edge-to-edge board navigation\n"
-+"\n"
-+"### Game Development Fundamentals\n"
-+"- **Finite State Machine**: Directional movement system preventing illegal 180-degree turns\n"
-+"- **Game Loop Architecture**: Standard Initialize-Update-Render-Cleanup pattern\n"
-+"- **Input Processing**: Real-time keyboard input handling with state validation\n"
-+"- **Collision Systems**: Multiple collision types (self, food, boundaries) with appropriate responses\n"
-+"\n"
-+"### Software Engineering Best Practices\n"
-+"- **Code Organization**: Separation of implementation (.cpp) from interface (implied .h files)\n"
-+"- **Defensive Programming**: Input validation and edge case handling (initial STOP state, boundary checks)\n"
-+"- **Magic Number Elimination**: Use of constants (DELAY_CONST) and member variables\n"
-+"- **Comment Documentation**: Clear inline comments explaining complex logic sections\n"
-+"\n"
-+"### Problem-Solving Capabilities\n"
-+"- **Edge Case Handling**: Prevented instant game-over on startup with STOP direction check\n"
-+"- **Coordinate System Management**: Proper handling of 2D grid positioning with boundary wrapping\n"
-+"- **State Synchronization**: Coordinated updates across multiple game objects (player, food, score)\n"
-+"- **Growth Mechanics**: Implemented snake growth by conditionally removing tail segment\n"
-+"\n"
-+"## Technical Proficiencies\n"
-+"- **Languages**: C++\n"
-+"- **Concepts**: OOP, Memory Management, Data Structures, Game Loops, FSM Design\n"
-+"- **Skills**: Debugging, Algorithm Design, Code Refactoring, Modular Architecture\n"
-+"- **Tools**: Standard C++ Library, Custom UI Library Integration (MacUILib)\n"
-+"\n"
-+"## Code Quality Indicators\n"
-+"- Clean, readable code with consistent naming conventions\n"
-+"- Logical file organization with focused, single-purpose modules\n"
-+"- Proper error prevention through loss flag and exit flag management\n"
-+"- Scalable design allowing for easy feature additions (score system, food generation)\n"
-+"\n"
-+"## Project Complexity\n"
-+"This project demonstrates the ability to:\n"
-+"- Architect a complete application from scratch\n"
-+"- Manage interdependent systems and object lifecycles\n"
-+"- Implement real-time interactive software\n"
-+"- Debug complex pointer-based data structures\n"
-+"- Balance performance with code maintainability\n"
-+"\n"
-+"---\n"
-+"\n"
-+"**Ideal for positions requiring**: C++ development, game programming, systems programming, or any role valuing strong fundamentals in object-oriented design and memory management.",
+"# Snake Game - C++ Terminal Game\n"
++ "\n"
++ "Classic Snake implementation showcasing systems programming fundamentals.\n"
++ "\n"
++ "## Key Technical Areas\n"
++ "\n"
++ "**Object-Oriented Design**\n"
++ "Modular class architecture (Player, Food, GameMechs) with proper encapsulation and separation of concerns.\n"
++ "\n"
++ "**Memory Management**\n"
++ "Manual heap allocation, Rule of Three implementation, and proper resource cleanup to prevent leaks.\n"
++ "\n"
++ "**Data Structures & Algorithms**\n"
++ "Custom array list for snake segments, O(n) collision detection, and randomized food spawning with validation.\n"
++ "\n"
++ "**Game Architecture**\n"
++ "Standard game loop pattern, finite state machine for movement, real-time input handling, and boundary wrapping.\n"
++ "\n"
++ "## Skills Demonstrated\n"
++ "C++, OOP, pointers, dynamic memory, algorithm design, debugging, modular architecture.\n"
++ "\n"
++ "## Complexity Highlights\n"
++ "- Built complete application architecture from scratch\n"
++ "- Managed interdependent object lifecycles\n"
++ "- Implemented real-time collision systems\n"
++ "- Balanced performance with maintainability\n",
     },
     {
       title: "HapticWay",
-      skills: ["C++", "Circuit Design", "Solid Modelling"],
+      skills: ["C++", "Embedded System Design", "Product Optimization"],
       shortDescription: "Discreet, wearable device integrated into a fanny pack to provide intuitive haptic navigation for an individual with Usher syndrome, bypassing visual and auditory limitations to restore independence. By combining LiDAR sensing with Arduino-powered motors, the system translates obstacle proximity and approach speed into varying vibration intensities, creating a silent, tactile map of the user's path. Designed for ENGINEER-1P13 Project Design Showcase.",
       category: "school",
       images: ["/projects/hw(3).png", "/projects/demo.mp4"],
       mediaTypes: ["image", "video"],
-      github: "https://github.com/yourusername/portfolio",
+      github: "https://github.com/Kyle2006reb/HapticWay",
       longDescription:
 "Assistive Navigation Device for Users with Usher Syndrome\n" +
   "\n" +
@@ -474,90 +434,132 @@ board members.`,
       </motion.div>
 
       {/* Hero Section */}
-      <section id="intro" className="pt-32 pb-24 max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-12"></section>
-<section className="pt-32 pb-24 max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-12">
-  
-  {/* Left Side: Text Content */}
-  <div className="flex-1 text-left">
-    <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight text-gray-900">
-      <motion.span
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.1 }}
-      >
-        {"Hi, I'm ".split("").map((char, index) => (
-          <motion.span
-            key={index}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: index * 0.1 }}
-          >
-            {char}
-          </motion.span>
-        ))}
-        <span className="text-purple-700">
-          {"Kyle.".split("").map((char, index) => (
+<section id="intro" className="relative pt-32 pb-24 overflow-hidden">
+  {/* Background Design */}
+  <div className="absolute inset-0 -z-10">
+    {/* Rotating dashed circle - large */}
+    <motion.div
+      animate={{ rotate: 360 }}
+      transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+      className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border-[3px] border-dashed border-purple-200/60"
+    />
+    
+    {/* Rotating dashed circle - medium, opposite direction */}
+    <motion.div
+      animate={{ rotate: -360 }}
+      transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+      className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] rounded-full border-[2px] border-dashed border-purple-300/40"
+    />
+
+    {/* Floating squares */}
+    {[...Array(12)].map((_, i) => (
+      <motion.div
+        key={i}
+        animate={{ 
+          y: [0, -20, 0],
+          opacity: [0.3, 0.6, 0.3]
+        }}
+        transition={{ 
+          duration: 4 + i * 0.5, 
+          repeat: Infinity, 
+          ease: "easeInOut",
+          delay: i * 0.3
+        }}
+        className="absolute w-8 h-8 bg-purple-200/40 rounded-lg"
+        style={{
+          top: `${15 + (i * 7) % 70}%`,
+          left: `${5 + (i * 13) % 40}%`,
+          transform: `rotate(${i * 15}deg)`
+        }}
+      />
+    ))}
+
+    {/* Gradient orbs */}
+    <div className="absolute top-20 left-10 w-72 h-72 bg-purple-200/30 rounded-full blur-3xl" />
+    <div className="absolute bottom-20 left-1/3 w-96 h-96 bg-purple-100/40 rounded-full blur-3xl" />
+  </div>
+
+  <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-12">
+    {/* Left Side: Text Content */}
+    <div className="flex-1 text-left">
+      <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight text-gray-900">
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.1 }}
+        >
+          {"Hi, I'm ".split("").map((char, index) => (
             <motion.span
               key={index}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: (index + 8) * 0.1 }} // Starts after "Hi, I'm "
+              transition={{ delay: index * 0.1 }}
             >
               {char}
             </motion.span>
           ))}
-        </span>
-      </motion.span>
-    </h1>
+          <span className="text-purple-700">
+            {"Kyle.".split("").map((char, index) => (
+              <motion.span
+                key={index}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: (index + 8) * 0.1 }}
+              >
+                {char}
+              </motion.span>
+            ))}
+          </span>
+        </motion.span>
+      </h1>
 
-    <motion.p 
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 1.8, duration: 0.5 }}
-      className="text-gray-600 text-lg md:text-xl max-w-xl mb-10 leading-relaxed"
-    >
-      Computer engineering student pursuing a career in artificial intelligence / machine learning.
-    </motion.p>
-
-    <motion.div 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 2.2 }}
-      className="flex gap-4"
-    >
-      <Link
-        href="/resume.pdf"
-        target="_blank"
-        className="px-8 py-4 rounded-full bg-purple-700 text-white font-semibold hover:bg-purple-800 hover:shadow-lg hover:shadow-purple-200 transition-all duration-300"
+      <motion.p 
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.8, duration: 0.5 }}
+        className="text-gray-600 text-lg md:text-xl max-w-xl mb-10 leading-relaxed"
       >
-        View Resume
-      </Link>
+        Computer engineering student pursuing a career in artificial intelligence / machine learning.
+      </motion.p>
+
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2.2 }}
+        className="flex gap-4"
+      >
+        <Link
+          href="/resume.pdf"
+          target="_blank"
+          className="px-8 py-4 rounded-full bg-purple-700 text-white font-semibold hover:bg-purple-800 hover:shadow-lg hover:shadow-purple-200 transition-all duration-300"
+        >
+          View Resume
+        </Link>
+      </motion.div>
+    </div>
+
+    {/* Right Side: Professional Image */}
+    <motion.div 
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay: 0.5, duration: 0.8 }}
+      className="relative"
+    >
+      <div className="relative w-64 h-64 md:w-80 md:h-80">
+        <div className="absolute -inset-4 border-2 border-purple-700/30 rounded-2xl rotate-6 pointer-events-none"></div>
+        
+        <div className="relative w-full h-full rounded-2xl border-4 border-purple-700 overflow-hidden shadow-2xl">
+          <Image
+            src="/kyle.jpeg"
+            alt="Kyle"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+      </div>
     </motion.div>
   </div>
-
-  {/* Right Side: Professional Image */}
-  <motion.div 
-    initial={{ opacity: 0, scale: 0.9 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ delay: 0.5, duration: 0.8 }}
-    className="relative"
-  >
-    <div className="relative w-64 h-64 md:w-80 md:h-80">
-      {/* The Purple Border Decor */}
-      <div className="absolute -inset-4 border-2 border-purple-700/30 rounded-2xl rotate-6 pointer-events-none"></div>
-      
-      {/* Main Image Container */}
-      <div className="relative w-full h-full rounded-2xl border-4 border-purple-700 overflow-hidden shadow-2xl">
-        <Image
-          src="/kyle.jpeg" // Ensure your file is named me.png in the public folder
-          alt="Kyle"
-          fill
-          className="object-cover"
-          priority
-        />
-      </div>
-    </div>
-  </motion.div>
 </section>
 
       {/* Experience Section */}
