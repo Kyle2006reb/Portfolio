@@ -474,9 +474,17 @@ board members.`,
       />
     ))}
 
-    {/* Gradient orbs */}
-    <div className="absolute top-20 left-10 w-72 h-72 bg-purple-200/30 rounded-full blur-3xl" />
-    <div className="absolute bottom-20 left-1/3 w-96 h-96 bg-purple-100/40 rounded-full blur-3xl" />
+    {/* Pulsing gradient orbs */}
+    <motion.div 
+      animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+      className="absolute top-20 left-10 w-72 h-72 bg-purple-200/30 rounded-full blur-3xl" 
+    />
+    <motion.div 
+      animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.6, 0.4] }}
+      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+      className="absolute bottom-20 left-1/3 w-96 h-96 bg-purple-100/40 rounded-full blur-3xl" 
+    />
   </div>
 
   <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-12">
@@ -491,9 +499,9 @@ board members.`,
           {"Hi, I'm ".split("").map((char, index) => (
             <motion.span
               key={index}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: index * 0.1 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.08, type: "spring", stiffness: 100 }}
             >
               {char}
             </motion.span>
@@ -502,9 +510,9 @@ board members.`,
             {"Kyle.".split("").map((char, index) => (
               <motion.span
                 key={index}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: (index + 8) * 0.1 }}
+                initial={{ opacity: 0, y: 20, scale: 0 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ delay: (index + 8) * 0.08, type: "spring", stiffness: 150 }}
               >
                 {char}
               </motion.span>
@@ -514,41 +522,79 @@ board members.`,
       </h1>
 
       <motion.p 
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.8, duration: 0.5 }}
+        initial={{ opacity: 0, x: -30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 1.4, duration: 0.6, type: "spring" }}
         className="text-gray-600 text-lg md:text-xl max-w-xl mb-10 leading-relaxed"
       >
         Computer engineering student pursuing a career in artificial intelligence / machine learning.
       </motion.p>
 
       <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.2 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.8, type: "spring", stiffness: 100 }}
         className="flex gap-4"
       >
         <Link
           href="/resume.pdf"
           target="_blank"
-          className="px-8 py-4 rounded-full bg-purple-700 text-white font-semibold hover:bg-purple-800 hover:shadow-lg hover:shadow-purple-200 transition-all duration-300"
+          className="group relative px-8 py-4 rounded-full bg-purple-700 text-white font-semibold overflow-hidden transition-all duration-300"
         >
-          View Resume
+          <motion.span
+            className="absolute inset-0 bg-purple-900"
+            initial={{ x: "-100%" }}
+            whileHover={{ x: 0 }}
+            transition={{ duration: 0.3 }}
+          />
+          <span className="relative z-10 flex items-center gap-2">
+            View Resume
+            <motion.span
+              animate={{ x: [0, 5, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
+              →
+            </motion.span>
+          </span>
         </Link>
       </motion.div>
     </div>
 
     {/* Right Side: Professional Image */}
     <motion.div 
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay: 0.5, duration: 0.8 }}
+      initial={{ opacity: 0, x: 50, rotate: -10 }}
+      animate={{ opacity: 1, x: 0, rotate: 0 }}
+      transition={{ delay: 0.3, duration: 0.8, type: "spring", stiffness: 80 }}
       className="relative"
     >
       <div className="relative w-64 h-64 md:w-80 md:h-80">
-        <div className="absolute -inset-4 border-2 border-purple-700/30 rounded-2xl rotate-6 pointer-events-none"></div>
+        {/* Animated border decoration */}
+        <motion.div 
+          animate={{ rotate: [6, 8, 6] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -inset-4 border-2 border-purple-700/30 rounded-2xl pointer-events-none"
+        />
         
-        <div className="relative w-full h-full rounded-2xl border-4 border-purple-700 overflow-hidden shadow-2xl">
+        {/* Second animated border */}
+        <motion.div 
+          animate={{ rotate: [-3, -5, -3] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -inset-6 border border-purple-400/20 rounded-2xl pointer-events-none"
+        />
+        
+        {/* Glow effect */}
+        <motion.div
+          animate={{ opacity: [0.5, 0.8, 0.5] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="absolute -inset-2 bg-purple-500/20 rounded-2xl blur-xl"
+        />
+        
+        {/* Main Image Container */}
+        <motion.div 
+          whileHover={{ scale: 1.03 }}
+          transition={{ type: "spring", stiffness: 200 }}
+          className="relative w-full h-full rounded-2xl border-4 border-purple-700 overflow-hidden shadow-2xl"
+        >
           <Image
             src="/kyle.jpeg"
             alt="Kyle"
@@ -556,7 +602,7 @@ board members.`,
             className="object-cover"
             priority
           />
-        </div>
+        </motion.div>
       </div>
     </motion.div>
   </div>
@@ -863,19 +909,20 @@ className="px-2 py-1 text-xs font-bold bg-purple-500/10 text-purple-700 border b
   </div>
 </section>
 
-      {/* About */}
-<section id="about" className="pb-32 max-w-6xl mx-auto px-6">
+
+{/* Sports */}
+<section id="sports" className="pb-32 max-w-6xl mx-auto px-6">
   <motion.h2 
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
-    className="text-5xl md:text-6xl font-semibold mb-10 text-center tracking-tight text-gray-900"
+    className="text-5xl md:text-6xl font-semibold mb-12 text-center tracking-tight text-gray-900"
   >
-    About Me
+    Athletics
   </motion.h2>
 
-  <motion.ul 
-    className="list-disc list-inside text-gray-600 max-w-3xl mx-auto space-y-2"
+  <motion.div 
+    className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6"
     initial="hidden"
     whileInView="show"
     viewport={{ once: true }}
@@ -884,46 +931,212 @@ className="px-2 py-1 text-xs font-bold bg-purple-500/10 text-purple-700 border b
       show: {
         opacity: 1,
         transition: {
-          staggerChildren: 0.2, // This creates the "one by one" effect
+          staggerChildren: 0.2,
+        },
+      },
+    }}
+  >
+    {/* Dragon Boat */}
+    <motion.div
+      variants={{
+        hidden: { opacity: 0, y: 30 },
+        show: { opacity: 1, y: 0 }
+      }}
+      whileHover={{ y: -5 }}
+      className="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-purple-200 transition-all overflow-hidden"
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-indigo-600/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+      
+      <div className="p-6">
+        <div className="flex items-center gap-4 mb-4">
+          <div className="w-16 h-16 rounded-xl bg-gray-100 border-2 border-purple-200 flex items-center justify-center overflow-hidden group-hover:border-purple-400 transition-colors">
+            <Image src="/logos/dragon_boat.jpg" alt="Dragon Boat" width={50} height={50} className="object-contain" />
+            <span className="text-3xl">🐉</span>
+          </div>
+          <div>
+            <h3 className="text-xl font-bold text-gray-900">Dragon Boat</h3>
+            <p className="text-purple-700 font-medium">McMaster University</p>
+          </div>
+        </div>
+        
+        <div className="space-y-3">
+          <div className="flex items-center gap-2 text-gray-600">
+            <span className="text-purple-500">▸</span>
+            <p>Competitive rowing team member</p>
+          </div>
+          <div className="flex items-center gap-2 text-gray-600">
+            <span className="text-purple-500">▸</span>
+            <p>Team coordination and endurance training</p>
+          </div>
+          <div className="flex items-center gap-2 text-gray-600">
+            <span className="text-purple-500">▸</span>
+            <p>Competing in regional tournaments</p>
+          </div>
+        </div>
+
+        <div className="mt-5 pt-4 border-t border-gray-100 flex items-center justify-between">
+          <span className="text-sm text-gray-500">2024 - Present</span>
+          <span className="px-3 py-1 bg-purple-100 text-purple-700 text-sm font-medium rounded-full">Active</span>
+        </div>
+      </div>
+    </motion.div>
+
+    {/* Soccer */}
+    <motion.div
+      variants={{
+        hidden: { opacity: 0, y: 30 },
+        show: { opacity: 1, y: 0 }
+      }}
+      whileHover={{ y: -5 }}
+      className="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-purple-200 transition-all overflow-hidden"
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-indigo-600/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+      
+      <div className="p-6">
+        <div className="flex items-center gap-4 mb-4">
+          <div className="w-16 h-16 rounded-xl bg-gray-100 border-2 border-purple-200 flex items-center justify-center overflow-hidden group-hover:border-purple-400 transition-colors">
+            <Image src="/logos/soccer.jpg" alt="Soccer" width={50} height={50} className="object-contain" /> 
+            <span className="text-3xl">⚽</span>
+          </div>
+          <div>
+            <h3 className="text-xl font-bold text-gray-900">Soccer</h3>
+            <p className="text-purple-700 font-medium">McMaster Intramurals</p>
+          </div>
+        </div>
+        
+        <div className="space-y-3">
+          <div className="flex items-center gap-2 text-gray-600">
+            <span className="text-purple-500">▸</span>
+            <p>Intramural league competitor</p>
+          </div>
+          <div className="flex items-center gap-2 text-gray-600">
+            <span className="text-purple-500">▸</span>
+            <p>Weekly matches and team strategy</p>
+          </div>
+          <div className="flex items-center gap-2 text-gray-600">
+            <span className="text-purple-500">▸</span>
+            <p>Building teamwork and communication skills</p>
+          </div>
+        </div>
+
+        <div className="mt-5 pt-4 border-t border-gray-100 flex items-center justify-between">
+          <span className="text-sm text-gray-500">2024 - Present</span>
+          <span className="px-3 py-1 bg-purple-100 text-purple-700 text-sm font-medium rounded-full">Active</span>
+        </div>
+      </div>
+    </motion.div>
+  </motion.div>
+</section>
+
+
+      {/* About */}
+<section id="about" className="pb-32 max-w-6xl mx-auto px-6">
+  <motion.h2 
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    className="text-5xl md:text-6xl font-semibold mb-12 text-center tracking-tight text-gray-900"
+  >
+    About Me
+  </motion.h2>
+
+  <motion.div 
+    className="max-w-4xl mx-auto grid gap-4"
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true }}
+    variants={{
+      hidden: { opacity: 0 },
+      show: {
+        opacity: 1,
+        transition: {
+          staggerChildren: 0.15,
         },
       },
     }}
   >
     {[
-      "Passionate about artificial intelligence / machine learning, and math.",
-      "Enjoy applying machine learning techniques to solve real-world problems.",
-      "Driven to learn and create solutions which improve global quality of life.",
-      "Outside of tech, I love playing soccer, going to the gym, and spending time with friends and family!",
-      "Seeking Summer 2026 internships to learn, contribute, and grow in team-driven environments."
-    ].map((text, index) => (
-      <motion.li 
+      { icon: "🧠", text: "Passionate about artificial intelligence / machine learning, and math.", color: "from-purple-500 to-indigo-500" },
+      { icon: "🔧", text: "Enjoy applying machine learning techniques to solve real-world problems.", color: "from-indigo-500 to-blue-500" },
+      { icon: "🌍", text: "Driven to learn and create solutions which improve global quality of life.", color: "from-blue-500 to-cyan-500" },
+      { icon: "⚽", text: "Outside of tech, I love playing soccer, going to the gym, and spending time with friends and family!", color: "from-cyan-500 to-teal-500" },
+      { icon: "🚀", text: "Seeking Summer 2026 internships to learn, contribute, and grow in team-driven environments.", color: "from-teal-500 to-purple-500" }
+    ].map((item, index) => (
+      <motion.div 
         key={index}
         variants={{
-          hidden: { opacity: 0, x: -20 },
+          hidden: { opacity: 0, x: -30 },
           show: { opacity: 1, x: 0 }
         }}
+        whileHover={{ scale: 1.02, x: 10 }}
+        className="group relative flex items-center gap-4 p-5 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-purple-200 transition-all cursor-default"
       >
-        {text}
-      </motion.li>
+        <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform`}>
+          {item.icon}
+        </div>
+        <p className="text-gray-700 leading-relaxed">{item.text}</p>
+        <div className={`absolute left-0 top-0 bottom-0 w-1 rounded-l-xl bg-gradient-to-b ${item.color} opacity-0 group-hover:opacity-100 transition-opacity`} />
+      </motion.div>
     ))}
-  </motion.ul>
+  </motion.div>
 </section>
 
       {/* Contact */}
-      <section id="contact" className="pb-16 max-w-6xl mx-auto px-6">
-        <h2 className="text-5xl md:text-6xl font-semibold mb-10 text-center tracking-tight text-gray-900">
-          Contact
-        </h2>
+<section id="contact" className="pb-16 max-w-6xl mx-auto px-6">
+  <h2 className="text-5xl md:text-6xl font-semibold mb-10 text-center tracking-tight text-gray-900">
+    Contact
+  </h2>
 
-        <div className="flex flex-col gap-4 items-center text-gray-600">
-          <p>✉ andrekylerebello@gmail.com</p>
-          <p>📞 +1 (437) 324-1211</p>
-          <p>📍 McMaster University, Hamilton, ON, Canada</p>
-          <div className="flex gap-10 mt-10">
-            
-          </div>
+  <motion.div 
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+    viewport={{ once: true }}
+    className="max-w-xl mx-auto bg-white/80 backdrop-blur-sm rounded-2xl border border-purple-200 shadow-lg shadow-purple-100/50 p-8"
+  >
+    <div className="flex flex-col gap-5">
+      <a 
+        href="mailto:andrekylerebello@gmail.com" 
+        className="flex items-center gap-4 p-4 rounded-xl bg-purple-50/50 hover:bg-purple-100/70 transition-colors group"
+      >
+        <div className="w-12 h-12 rounded-full bg-purple-700 flex items-center justify-center text-white text-xl group-hover:scale-110 transition-transform">
+          ✉
         </div>
-      </section>
+        <div>
+          <p className="text-sm text-purple-700 font-medium">Email</p>
+          <p className="text-gray-700">andrekylerebello@gmail.com</p>
+        </div>
+      </a>
+
+      <a 
+        href="tel:+14373241211" 
+        className="flex items-center gap-4 p-4 rounded-xl bg-purple-50/50 hover:bg-purple-100/70 transition-colors group"
+      >
+        <div className="w-12 h-12 rounded-full bg-purple-700 flex items-center justify-center text-white text-xl group-hover:scale-110 transition-transform">
+          📞
+        </div>
+        <div>
+          <p className="text-sm text-purple-700 font-medium">Phone</p>
+          <p className="text-gray-700">+1 (437) 324-1211</p>
+        </div>
+      </a>
+
+      <div className="flex items-center gap-4 p-4 rounded-xl bg-purple-50/50">
+        <div className="w-12 h-12 rounded-full bg-purple-700 flex items-center justify-center text-white text-xl">
+          📍
+        </div>
+        <div>
+          <p className="text-sm text-purple-700 font-medium">Location</p>
+          <p className="text-gray-700">McMaster University, Hamilton, ON</p>
+        </div>
+      </div>
+    </div>
+
+    <div className="flex justify-center gap-6 mt-8 pt-6 border-t border-purple-100">
+      {/* add your social links here */}
+    </div>
+  </motion.div>
+</section>
 
       {/* Project Modal */}
       <AnimatePresence>
