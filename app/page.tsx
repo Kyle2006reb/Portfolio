@@ -922,7 +922,7 @@ className="px-2 py-1 text-xs font-bold bg-purple-500/10 text-purple-700 border b
   </motion.h2>
 
   <motion.div 
-    className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6"
+    className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8"
     initial="hidden"
     whileInView="show"
     viewport={{ once: true }}
@@ -947,35 +947,34 @@ className="px-2 py-1 text-xs font-bold bg-purple-500/10 text-purple-700 border b
     >
       <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-indigo-600/5 opacity-0 group-hover:opacity-100 transition-opacity" />
       
-      <div className="p-6">
-        <div className="flex items-center gap-4 mb-4">
-          <div className="w-16 h-16 rounded-xl bg-gray-100 border-2 border-purple-200 flex items-center justify-center overflow-hidden group-hover:border-purple-400 transition-colors">
-            <Image src="/logos/dragon_boat.jpg" alt="Dragon Boat" width={50} height={50} className="object-contain" />
-            <span className="text-3xl">🐉</span>
+      <div className="p-8">
+        <div className="flex items-center gap-5 mb-5">
+          <div className="w-20 h-20 rounded-xl bg-gray-100 border-2 border-purple-200 flex items-center justify-center overflow-hidden group-hover:border-purple-400 transition-colors">
+            <Image src="/logos/dragon_boat.jpg" alt="Dragon Boat" width={70} height={70} className="object-contain" />
           </div>
           <div>
-            <h3 className="text-xl font-bold text-gray-900">Dragon Boat</h3>
-            <p className="text-purple-700 font-medium">McMaster University</p>
+            <h3 className="text-2xl font-bold text-gray-900">Dragon Boat Rowing 🐉🛶</h3>
+            <p className="text-purple-700 font-medium text-lg">McMaster Official Team</p>
           </div>
         </div>
         
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 text-gray-600">
+        <div className="space-y-4">
+          <div className="flex items-center gap-2 text-gray-600 text-lg">
             <span className="text-purple-500">▸</span>
             <p>Competitive rowing team member</p>
           </div>
-          <div className="flex items-center gap-2 text-gray-600">
+          <div className="flex items-center gap-2 text-gray-600 text-lg">
             <span className="text-purple-500">▸</span>
             <p>Team coordination and endurance training</p>
           </div>
-          <div className="flex items-center gap-2 text-gray-600">
+          <div className="flex items-center gap-2 text-gray-600 text-lg">
             <span className="text-purple-500">▸</span>
             <p>Competing in regional tournaments</p>
           </div>
         </div>
 
-        <div className="mt-5 pt-4 border-t border-gray-100 flex items-center justify-between">
-          <span className="text-sm text-gray-500">2024 - Present</span>
+        <div className="mt-6 pt-5 border-t border-gray-100 flex items-center justify-between">
+          <span className="text-sm text-gray-500">Sept 2025 - Present</span>
           <span className="px-3 py-1 bg-purple-100 text-purple-700 text-sm font-medium rounded-full">Active</span>
         </div>
       </div>
@@ -992,35 +991,34 @@ className="px-2 py-1 text-xs font-bold bg-purple-500/10 text-purple-700 border b
     >
       <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-indigo-600/5 opacity-0 group-hover:opacity-100 transition-opacity" />
       
-      <div className="p-6">
-        <div className="flex items-center gap-4 mb-4">
-          <div className="w-16 h-16 rounded-xl bg-gray-100 border-2 border-purple-200 flex items-center justify-center overflow-hidden group-hover:border-purple-400 transition-colors">
-            <Image src="/logos/soccer.jpg" alt="Soccer" width={50} height={50} className="object-contain" /> 
-            <span className="text-3xl">⚽</span>
+      <div className="p-8">
+        <div className="flex items-center gap-5 mb-5">
+          <div className="w-20 h-20 rounded-xl bg-gray-100 border-2 border-purple-200 flex items-center justify-center overflow-hidden group-hover:border-purple-400 transition-colors">
+            <Image src="/logos/soccer.jpg" alt="Soccer" width={70} height={70} className="object-contain" />
           </div>
           <div>
-            <h3 className="text-xl font-bold text-gray-900">Soccer</h3>
-            <p className="text-purple-700 font-medium">McMaster Intramurals</p>
+            <h3 className="text-2xl font-bold text-gray-900">Soccer ⚽</h3>
+            <p className="text-purple-700 font-medium text-lg">McMaster Men's Intramurals</p>
           </div>
         </div>
         
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 text-gray-600">
+        <div className="space-y-4">
+          <div className="flex items-center gap-2 text-gray-600 text-lg">
             <span className="text-purple-500">▸</span>
             <p>Intramural league competitor</p>
           </div>
-          <div className="flex items-center gap-2 text-gray-600">
+          <div className="flex items-center gap-2 text-gray-600 text-lg">
             <span className="text-purple-500">▸</span>
             <p>Weekly matches and team strategy</p>
           </div>
-          <div className="flex items-center gap-2 text-gray-600">
+          <div className="flex items-center gap-2 text-gray-600 text-lg">
             <span className="text-purple-500">▸</span>
             <p>Building teamwork and communication skills</p>
           </div>
         </div>
 
-        <div className="mt-5 pt-4 border-t border-gray-100 flex items-center justify-between">
-          <span className="text-sm text-gray-500">2024 - Present</span>
+        <div className="mt-6 pt-5 border-t border-gray-100 flex items-center justify-between">
+          <span className="text-sm text-gray-500">Dec 2025 - Present</span>
           <span className="px-3 py-1 bg-purple-100 text-purple-700 text-sm font-medium rounded-full">Active</span>
         </div>
       </div>
