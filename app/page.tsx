@@ -416,22 +416,7 @@ board members.`,
       {/* NEW mountains intro */}
       <IntroHero />
 
-      {/* Mountains FRONT */}
-      <motion.div
-        className="absolute bottom-0 left-0 w-full z-20 pointer-events-none"
-        initial={{ y: 80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1.6, ease: "easeOut" }}
-      >
-        <Image
-          src="/hero/mountains-front.png"
-          alt="Mountains foreground"
-          width={1920}
-          height={600}
-          priority
-          className="w-full object-cover"
-        />
-      </motion.div>
+      
 
       {/* Hero Section */}
 <section id="intro" className="relative pt-32 pb-24 overflow-hidden">
@@ -1272,11 +1257,11 @@ className="px-2 py-1 text-xs font-bold bg-purple-500/10 text-purple-700 border b
   </div>
 
 
-<div className="absolute top-1/4 -left-20 opacity-[0.15] pointer-events-none select-none">
+<div className="absolute top-1/4 -left-20 opacity-[0.20] pointer-events-none select-none">
     <svg 
       width="500" 
       height="500" 
-      viewBox="0 0 200 200" 
+      viewBox="0 0 -200 200" 
       fill="none" 
       xmlns="http://www.w3.org/2000/svg"
     >
